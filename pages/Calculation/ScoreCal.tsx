@@ -1,6 +1,6 @@
 import React from "react";
-import CalculationHome from "../CalculationHome";
-import { Box, Text, Button, ButtonGroup, Center} from "@chakra-ui/react";
+import CalculationHome from "./index";
+import { Box, Text, Button, ButtonGroup, Center } from "@chakra-ui/react";
 
 const ScoreCal = () => {
   return (
@@ -104,7 +104,7 @@ const ScoreCal = () => {
         </Box>
       </Box>
       <Box>
-      <Button float="right">計算する</Button>
+        <Button float="right">計算する</Button>
       </Box>
       <Center>
         <Text fontSize="30px">xxx点</Text>
