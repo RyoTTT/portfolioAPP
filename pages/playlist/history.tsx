@@ -4,7 +4,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -12,14 +11,17 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 import Labels from '../../components/Labels'
+import LinkTabs from '@/components/linkTabs'
 const PlayList = () => {
   return (
     <>
     <Labels />
-    <Box margin="10% 10%">
+    <LinkTabs />
+    <Box>
     <Box margin="1% 20%">
-    <Input placeholder='点数を入力'></Input>
+    <Input placeholder='得点を入力'></Input>
     <Input placeholder='順位'></Input>
+    <Input placeholder='精算した点数'></Input>
     <Button>追加</Button>
     </Box>
     <Box>
@@ -34,20 +36,23 @@ const PlayList = () => {
         <Thead>
           <Tr>
             <Th>日付</Th>
-            <Th>点数</Th>
+            <Th>卓上の得点</Th>
             <Th>順位</Th>
+            <Th>精算した得点</Th>
           </Tr>
           </Thead>
           <Tbody>
             <Tr>
               <Td>2023/03/13</Td>
-              <Td>25000</Td>
-              <Td>2位</Td>
+              <Td>22000</Td>
+              <Td>3位</Td>
+              <Td>-11</Td>
             </Tr>
             <Tr>
               <Td>2023/03/13</Td>
               <Td>25000</Td>
               <Td>2位</Td>
+              <Td>+10</Td>
             </Tr>
           </Tbody>
         

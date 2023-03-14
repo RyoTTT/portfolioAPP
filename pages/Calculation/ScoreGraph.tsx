@@ -1,5 +1,5 @@
 import React from "react";
-import CalculationHome from "./index";
+import CalculationHome from "./calhome";
 import { Box } from "@chakra-ui/react";
 
 const ScoreGraph = () => {

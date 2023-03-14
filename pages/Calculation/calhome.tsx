@@ -3,8 +3,8 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Box,
   Center,
+  Box
 } from "@chakra-ui/react";
 import Labels from "../../components/Labels";
 import Link from "next/link";
@@ -16,19 +16,19 @@ const CalculationHome = () => {
       <Center margin="30px">
         <Breadcrumb>
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../Calculation/ScoreCal">
+            <BreadcrumbLink as={Link} href="../calculation/scorecal">
               得点計算
             </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../Calculation/ScoreGraph">
+            <BreadcrumbLink as={Link} href="../calculation/scoregraph">
               点数表
             </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../Calculation/DetailScore">
+            <BreadcrumbLink as={Link} href="../calculation/detailscore">
               符計算
             </BreadcrumbLink>
           </BreadcrumbItem>
