@@ -29,6 +29,7 @@ const PlayList = () => {
     <Box>
       <Text>平均順位:3位</Text>
       <Text>平均得点:25000点</Text>
+      <Text>平均精算得点</Text>
       </Box>  
      <TableContainer>
       <Table variant="simple">
