@@ -11,7 +11,7 @@ import {
   TableContainer,
 } from '@chakra-ui/react'
 import Labels from '../../components/Labels'
-import LinkTabs from '@/components/linkTabs'
+import LinkTabs from "../../components/LinkTabs"
 const PlayList = () => {
   return (
     <>

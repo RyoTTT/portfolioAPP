@@ -1,5 +1,5 @@
 import Labels from "@/components/Labels";
-import LinkTabs from "@/components/linkTabs";
+import LinkTabs from "../../components/LinkTabs"
 import React from "react";
 import { Box } from "@chakra-ui/react";
 

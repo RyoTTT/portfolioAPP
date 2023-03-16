@@ -11,7 +11,7 @@ import {
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
-import LinkTabs from "@/components/linkTabs";
+import LinkTabs from "../../components/LinkTabs"
 
 const totalresult = () => {
   return (
