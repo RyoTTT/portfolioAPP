@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Test</title>
+        <title>麻雀アプリ</title>
       </Head>
       <Labels />
     </>
