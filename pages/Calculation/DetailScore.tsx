@@ -4,6 +4,7 @@ import { Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import DefaultPoint from "../../components/DetailScoreTabs/DefaultPoint"
+import Agari from "@/components/DetailScoreTabs/Agari";
 
 //next/Imageを使って画像を使いたい
 const DetailScore = () => {
@@ -25,6 +26,9 @@ const DetailScore = () => {
           </TabPanel>
           <TabPanel>
           <DefaultPoint />
+          </TabPanel>
+          <TabPanel>
+            <Agari />
           </TabPanel>
         </TabPanels>
       </Tabs>
