@@ -23,12 +23,12 @@ const Atama = () => {
           >
             どの種類でアタマを作ったかで、加符点が与えられる。基本的には数牌のアタマでは加符点は0点で、役牌のアタマでは2点の加符点となる。
           </Highlight>
-        </Text>   
+        </Text>
       </Box>
       <Box textAlign="center">
-    <Heading>風牌の加符点について</Heading>
-    <Text>
-        風牌が2点の加符点となる場合→アタマの風牌が自風または場風と同じ場合のみ、2点の加符点が与えられる。
+        <Heading>風牌の加符点について</Heading>
+        <Text>
+          風牌が2点の加符点となる場合→アタマの風牌が自風または場風と同じ場合のみ、2点の加符点が与えられる。
         </Text>
         <TableContainer>
           <Table>
@@ -119,9 +119,24 @@ const Atama = () => {
       <Box textAlign="center" margin="3%">
         <Heading>三元牌がアタマの場合</Heading>
         <Box display="flex" justifyContent="center">
-        <Image src="/tupai/chun.gif" alt="test" width={40} height={40}></Image>
-        <Image src="/tupai/haku.gif" alt="test" width={40} height={40}></Image>
-        <Image src="/tupai/jatsu.gif" alt="test" width={40} height={40}></Image>
+          <Image
+            src="/tupai/chun.gif"
+            alt="test"
+            width={40}
+            height={40}
+          ></Image>
+          <Image
+            src="/tupai/haku.gif"
+            alt="test"
+            width={40}
+            height={40}
+          ></Image>
+          <Image
+            src="/tupai/jatsu.gif"
+            alt="test"
+            width={40}
+            height={40}
+          ></Image>
         </Box>
         <Text>
           三元牌はどのような状況でもアタマにした場合2点の加符点が与えられる。
@@ -130,20 +145,18 @@ const Atama = () => {
       <Box textAlign="center" margin="3%">
         <Heading>数牌がアタマの場合</Heading>
         <Box display="flex" justifyContent="center" marginBottom="1%">
-        <Image src="/manzu/m2.gif" alt="test" width={40} height={40}></Image>
-        <Image src="/manzu/m2.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/manzu/m2.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/manzu/m2.gif" alt="test" width={40} height={40}></Image>
         </Box>
         <Box display="flex" justifyContent="center" marginBottom="1%">
-        <Image src="/pinzu/p1.gif" alt="test" width={40} height={40}></Image>
-        <Image src="/pinzu/p1.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/pinzu/p1.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/pinzu/p1.gif" alt="test" width={40} height={40}></Image>
         </Box>
         <Box display="flex" justifyContent="center" marginBottom="1%">
-        <Image src="/sozu/s8.gif" alt="test" width={40} height={40}></Image>
-        <Image src="/sozu/s8.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/sozu/s8.gif" alt="test" width={40} height={40}></Image>
+          <Image src="/sozu/s8.gif" alt="test" width={40} height={40}></Image>
         </Box>
-        <Text>
-          数牌はどのような状況でもアタマにした場合加符点はない。
-        </Text>
+        <Text>数牌はどのような状況でもアタマにした場合加符点はない。</Text>
       </Box>
     </>
   );
