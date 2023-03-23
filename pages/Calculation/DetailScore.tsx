@@ -33,10 +33,13 @@ const DetailScore = () => {
             <Agari />
           </TabPanel>
           <TabPanel>
-            <Text>テスト</Text>
+            <Text>メンツによるカフ</Text>
           </TabPanel>
           <TabPanel>
             <Atama />
+          </TabPanel>
+          <TabPanel>
+            待ち
           </TabPanel>
         </TabPanels>
       </Tabs>
