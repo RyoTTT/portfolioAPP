@@ -21,13 +21,13 @@ const Labels = () => {
           </Box>
         </Flex>
         <Box>
-          <Grid templateColumns="repeat(4,1fr)" gap={2} w="1200px" h="40px" textAlign="center">
-            <GridItem bgColor="blue">
+          <Grid templateColumns="repeat(4,1fr)" gap={2} maxWidth="1200px" w="100%" h="40px" textAlign="center">
+            <GridItem bgColor="blue.200">
               <Link href="../hands">役</Link>
             </GridItem>
-            <GridItem bgColor="blue"><Link href="/calculation/calhome">点数計算</Link></GridItem>
-            <GridItem bgColor="blue"><Link href="../handcheck">待ち牌確認</Link></GridItem>
-            <GridItem bgColor="blue"><Link href="../playlist/playlisthome">対戦履歴</Link></GridItem>
+            <GridItem bgColor="blue.200"><Link href="/calculation/calhome">点数計算</Link></GridItem>
+            <GridItem bgColor="blue.200"><Link href="../handcheck">待ち牌確認</Link></GridItem>
+            <GridItem bgColor="blue.200"><Link href="../playlist/playlisthome">対戦履歴</Link></GridItem>
           </Grid>
         </Box>
       </Box>

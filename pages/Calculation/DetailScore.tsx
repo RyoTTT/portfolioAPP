@@ -7,14 +7,15 @@ import DefaultPoint from "../../components/DetailScoreTabs/DefaultPoint"
 import Agari from "@/components/DetailScoreTabs/Agari";
 import Atama from "@/components/DetailScoreTabs/Atama";
 import About from "@/components/DetailScoreTabs/About";
+import Machi from "@/components/DetailScoreTabs/Machi";
 
 //next/Imageを使って画像を使いたい
 const DetailScore = () => {
   return (
     <>
       <CalculationHome />
-      <Tabs>
-        <TabList>
+      <Tabs maxWidth="1500px" w="100%">
+        <TabList >
           <Tab>符計算の概要</Tab>
           <Tab>基本符</Tab>
           <Tab>アガリ方</Tab>
@@ -39,7 +40,7 @@ const DetailScore = () => {
             <Atama />
           </TabPanel>
           <TabPanel>
-            待ち
+            <Machi />
           </TabPanel>
         </TabPanels>
       </Tabs>
