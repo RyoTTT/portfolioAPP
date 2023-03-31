@@ -27,6 +27,7 @@ const Machi = () => {
           colorScheme="red"
           fontSize="15px"
           justifyContent="center"
+          
         >
           <TableContainer>
             <Tbody>
@@ -47,7 +48,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/sozu/s2.gif"
@@ -64,7 +65,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="space-between">
                     <Image
                       src="/sozu/s1.gif"
@@ -98,7 +99,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex">
                     <Box
                       display="flex"
@@ -135,7 +136,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="space-between">
                     <Image
                       src="/pinzu/p2.gif"
@@ -169,7 +170,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/manzu/m6.gif"
@@ -186,7 +187,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/manzu/m7.gif"
@@ -214,7 +215,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/pinzu/p8.gif"
@@ -231,7 +232,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/pinzu/p7.gif"
@@ -259,7 +260,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/tupai/jatsu.gif"
@@ -270,7 +271,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/tupai/jatsu.gif"
@@ -298,7 +299,7 @@ const Machi = () => {
               </Tr>
               <Tr>
                 <Td>
-                  <Box textAlign="center">手牌</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">手牌</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/sozu/s4.gif"
@@ -327,7 +328,7 @@ const Machi = () => {
                   </Box>
                 </Td>
                 <Td>
-                  <Box textAlign="center">当たり牌(待ち牌)</Box>
+                  <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
                   <Box display="flex" justifyContent="center">
                     <Image
                       src="/sozu/s4.gif"
