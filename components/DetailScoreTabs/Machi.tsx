@@ -20,16 +20,19 @@ const Machi = () => {
           テンパイした時、待ちの種類によって毎に決められた加符点が与えられる。アガリ牌が1枚の時は2点、2枚以上の時は0点となる。
         </Text>
       </Box>
-      <Box margin="0 auto" width="100%" maxWidth="500px">
-        <Table
+      <Box margin="0 auto" width="100%" maxWidth="1000px">
+        <TableContainer >
+            <Table
           border="solid"
           borderColor="red.200"
           colorScheme="red"
           fontSize="15px"
           justifyContent="center"
+          width="1000px"
+          maxWidth="100%"
           
         >
-          <TableContainer>
+          
             <Tbody>
               <Tr>
                 <Td colSpan={3} fontSize="30px" textAlign="center">
@@ -53,31 +56,31 @@ const Machi = () => {
                     <Image
                       src="/sozu/s2.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/sozu/s3.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
                 <Td>
                   <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
-                  <Box display="flex" justifyContent="space-between">
+                  <Box display="flex" justifyContent="center">
                     <Image
                       src="/sozu/s1.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/sozu/s4.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -109,46 +112,46 @@ const Machi = () => {
                       <Image
                         src="/pinzu/p2.gif"
                         alt="test"
-                        width={40}
-                        height={40}
+                        width={50}
+                        height={50}
                       ></Image>
                       <Image
                         src="/pinzu/p2.gif"
                         alt="test"
-                        width={40}
-                        height={40}
+                        width={50}
+                        height={50}
                       ></Image>
                     </Box>
                     <Box display="flex">
                       <Image
                         src="/manzu/m4.gif"
                         alt="test"
-                        width={40}
-                        height={40}
+                        width={50}
+                        height={50}
                       ></Image>
                       <Image
                         src="/manzu/m4.gif"
                         alt="test"
-                        width={40}
-                        height={40}
+                        width={50}
+                        height={50}
                       ></Image>
                     </Box>
                   </Box>
                 </Td>
                 <Td>
                   <Box textAlign="center" fontSize="15px" marginBottom="5%">当たり牌(待ち牌)</Box>
-                  <Box display="flex" justifyContent="space-between">
+                  <Box display="flex" justifyContent="center">
                     <Image
                       src="/pinzu/p2.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/manzu/m4.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -175,14 +178,14 @@ const Machi = () => {
                     <Image
                       src="/manzu/m6.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/manzu/m8.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -192,8 +195,8 @@ const Machi = () => {
                     <Image
                       src="/manzu/m7.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -220,14 +223,14 @@ const Machi = () => {
                     <Image
                       src="/pinzu/p8.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/pinzu/p9.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -237,8 +240,8 @@ const Machi = () => {
                     <Image
                       src="/pinzu/p7.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -265,8 +268,8 @@ const Machi = () => {
                     <Image
                       src="/tupai/jatsu.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -276,8 +279,8 @@ const Machi = () => {
                     <Image
                       src="/tupai/jatsu.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -304,26 +307,26 @@ const Machi = () => {
                     <Image
                       src="/sozu/s4.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/sozu/s5.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/sozu/s6.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                     <Image
                       src="/sozu/s7.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -333,14 +336,14 @@ const Machi = () => {
                     <Image
                       src="/sozu/s4.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>{" "}
                     <Image
                       src="/sozu/s7.gif"
                       alt="test"
-                      width={40}
-                      height={40}
+                      width={50}
+                      height={50}
                     ></Image>
                   </Box>
                 </Td>
@@ -351,8 +354,9 @@ const Machi = () => {
                 </Td>
               </Tr>
             </Tbody>
+            </Table>
           </TableContainer>
-        </Table>
+        
       </Box>
     </>
   );

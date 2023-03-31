@@ -8,6 +8,7 @@ import Agari from "@/components/DetailScoreTabs/Agari";
 import Atama from "@/components/DetailScoreTabs/Atama";
 import About from "@/components/DetailScoreTabs/About";
 import Machi from "@/components/DetailScoreTabs/Machi";
+import Mentsu from "@/components/DetailScoreTabs/Mentsu";
 
 //next/Imageを使って画像を使いたい
 const DetailScore = () => {
@@ -34,7 +35,7 @@ const DetailScore = () => {
             <Agari />
           </TabPanel>
           <TabPanel>
-            <Text>メンツによるカフ</Text>
+            <Mentsu />
           </TabPanel>
           <TabPanel>
             <Atama />
