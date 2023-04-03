@@ -31,9 +31,9 @@ const Mentsu = () => {
           <Tbody >
             <Tr textAlign="center">
               <Td textAlign="center" fontSize="17px" >面子の種類</Td >
-              <Td textAlign="center" fontSize="17px" >中張牌</Td >
+              <Td textAlign="center" fontSize="17px" >中張牌(2~8の数牌)</Td >
               <Td textAlign="center" fontSize="17px" >加符点</Td >
-              <Td textAlign="center" fontSize="17px" >幺九牌</Td >
+              <Td textAlign="center" fontSize="17px" >幺九牌(1、9、字牌)</Td >
               <Td textAlign="center" fontSize="17px" >加符点</Td >
             </Tr>
             <Tr>
@@ -196,7 +196,7 @@ const Mentsu = () => {
               <Td textAlign="center" fontSize="17px" fontWeight="bold" color="red">16点</Td >
             </Tr>
             <Tr>
-              <Td textAlign="center" fontSize="17px" fontWeight="bold">明槓</Td >
+              <Td textAlign="center" fontSize="17px" fontWeight="bold">暗槓</Td >
               <Td textAlign="center" fontSize="17px" >
                 <Box display="flex" justifyContent="center">
                   <Image
