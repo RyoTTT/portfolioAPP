@@ -9,6 +9,7 @@ import Atama from "@/components/DetailScoreTabs/Atama";
 import About from "@/components/DetailScoreTabs/About";
 import Machi from "@/components/DetailScoreTabs/Machi";
 import Mentsu from "@/components/DetailScoreTabs/Mentsu";
+import Hosoku from "@/components/DetailScoreTabs/Hosoku";
 
 //next/Imageを使って画像を使いたい
 const DetailScore = () => {
@@ -23,6 +24,7 @@ const DetailScore = () => {
           <Tab>面子による加符</Tab>
           <Tab>アタマ</Tab>
           <Tab>待ち</Tab>
+          <Tab>補足</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -42,6 +44,9 @@ const DetailScore = () => {
           </TabPanel>
           <TabPanel>
             <Machi />
+          </TabPanel>
+          <TabPanel>
+            <Hosoku />
           </TabPanel>
         </TabPanels>
       </Tabs>
