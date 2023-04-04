@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Labels from "../components/Labels";
+import Yaku from "@/components/Yaku";
 const Hands = () => {
   return (
     <>
@@ -29,6 +30,21 @@ const Hands = () => {
                 <p>説明</p>
               </GridItem>
             </Grid>
+          </TabPanel>
+          <TabPanel>
+            テスト
+          </TabPanel>
+          <TabPanel>
+            テスト
+          </TabPanel>
+          <TabPanel>
+            <Yaku />
+          </TabPanel>
+          <TabPanel>
+            テスト
+          </TabPanel>
+          <TabPanel>
+            テスト
           </TabPanel>
         </TabPanels>
       </Tabs>
