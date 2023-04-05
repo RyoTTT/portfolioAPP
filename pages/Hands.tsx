@@ -2,7 +2,11 @@ import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Labels from "../components/Labels";
-import Yaku from "@/components/Yaku";
+import Yaku3 from "@/components/YakuList/Yaku3";
+import Yaku6 from "@/components/YakuList/Yaku6";
+import Yaku1 from "@/components/YakuList/Yaku1";
+import Yaku2 from "@/components/YakuList/Yaku2";
+import YakuMan from "@/components/YakuList/YakuMan";
 const Hands = () => {
   return (
     <>
@@ -32,19 +36,19 @@ const Hands = () => {
             </Grid>
           </TabPanel>
           <TabPanel>
-            テスト
+            <Yaku1 />
           </TabPanel>
           <TabPanel>
-            テスト
+            <Yaku2 />
           </TabPanel>
           <TabPanel>
-            <Yaku />
+            <Yaku3 />
           </TabPanel>
           <TabPanel>
-            テスト
+            <Yaku6 />
           </TabPanel>
           <TabPanel>
-            テスト
+            <YakuMan />
           </TabPanel>
         </TabPanels>
       </Tabs>
