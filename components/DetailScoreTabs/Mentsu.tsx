@@ -19,7 +19,7 @@ const Mentsu = () => {
         <Text fontSize="18px" marginTop="1%">
           手牌の面子の種類によって与えられる点数が変わります。
           <br />
-          明子(鳴いてできた刻子)、暗子(鳴かずに揃えた刻子)、明槓(鳴いて揃えた槓子)、暗槓(鳴かずに揃えた槓子)によって得られる点数が変わります。
+          明刻(鳴いてできた刻子)、暗刻(鳴かずに揃えた刻子)、明槓(鳴いて揃えた槓子)、暗槓(鳴かずに揃えた槓子)によって得られる点数が変わります。
           <br />
           さらに、それらを中張牌(チュンチャンパイ、2~8の数牌)、幺九牌(ヤオチュウハイ、1、9、字牌)のどちらで揃えたかによっても点数が変わります。
           <br />
@@ -37,7 +37,7 @@ const Mentsu = () => {
               <Td textAlign="center" fontSize="17px" >加符点</Td >
             </Tr>
             <Tr>
-              <Td textAlign="center" fontSize="17px" fontWeight="bold">明子</Td >
+              <Td textAlign="center" fontSize="17px" fontWeight="bold">明刻</Td >
               <Td textAlign="center" fontSize="17px" >
                 <Box display="flex" justifyContent="center">
                   <Image
@@ -86,7 +86,7 @@ const Mentsu = () => {
               <Td textAlign="center" fontSize="17px" fontWeight="bold" color="red">4点</Td >
             </Tr>
             <Tr>
-              <Td textAlign="center" fontSize="17px" fontWeight="bold">暗子</Td >
+              <Td textAlign="center" fontSize="17px" fontWeight="bold">暗刻</Td >
               <Td textAlign="center" fontSize="17px" >
                 <Box display="flex" justifyContent="center">
                   <Image
