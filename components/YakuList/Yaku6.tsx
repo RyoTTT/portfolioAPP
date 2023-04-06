@@ -5,7 +5,7 @@ import Image from "next/image";
 const Yaku6 = () => {
   return (
     <>
-    <Box border="solid">
+    <Box border="solid" margin="2% 0">
       <Box bg="yellow.100" marginBottom="1.5%">
         <Heading fontSize="25px">チンイツ(清一色)</Heading>
         <Box display="flex" fontSize="18px">

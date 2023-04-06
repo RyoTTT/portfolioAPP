@@ -5,8 +5,8 @@ import Image from "next/image";
 const Yaku3 = () => {
   return (
     <>
-    <Box>
-    <Box border="solid">
+    
+    <Box border="solid" margin="2% 0">
       <Box bg="red.100" marginBottom="1.5%">
         <Heading fontSize="25px">リャンペーコー(二盃口)</Heading>
         <Box display="flex" fontSize="18px">
@@ -87,7 +87,7 @@ const Yaku3 = () => {
         </Box>
         <Text fontSize="20px" margin="1% 1%">1種類の数牌と字牌のみでなる役。数牌の種類は問わない。</Text>   
     </Box>
-    </Box>
+    
     </>
   );
 };
