@@ -1,42 +1,12 @@
 import React from "react";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import { DoubleReach } from "../YakuList/YakuBox2/DoubleReach";
 
 const Yaku2 = () => {
   return (
     <>
-      <Box border="solid" margin="2% 0">
-        <Box bg="green.100" marginBottom="1.5%">
-          <Heading fontSize="25px">ダブルリーチ(立直)</Heading>
-          <Box display="flex" fontSize="18px">
-            <Text bg="green.300" border="solid" margin="0 1%">
-              2翻
-            </Text>
-            <Text bg="green.300" border="solid" marginRight="1%">
-              鳴きNG
-            </Text>
-          </Box>
-        </Box>
-        <Box display="flex" justifyContent="center">
-          <Image src="/pinzu/p1.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p2.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p3.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p1.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p1.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p1.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/sozu/s6.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/sozu/s7.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/sozu/s8.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/manzu/m2.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/manzu/m2.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/manzu/m2.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p8.gif" alt="test" width={45} height={40}></Image>
-          <Image src="/pinzu/p8.gif" alt="test" width={45} height={40}></Image>
-        </Box>
-        <Text fontSize="20px" margin="1% 1%">
-          1巡目の捨て牌でリーチすると成立する役。それまでに鳴きが発生していると成立しない。
-        </Text>
-      </Box>
+<DoubleReach />
       <Box border="solid" margin="2% 0">
         <Box bg="green.100" marginBottom="1.5%">
           <Heading fontSize="25px">チートイツ(七対子)</Heading>

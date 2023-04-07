@@ -2,12 +2,12 @@ import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Input } from "@chakra-ui/react";
 import Labels from "../components/Labels";
-import Yaku3 from "@/components/YakuList/Yaku3";
-import Yaku6 from "@/components/YakuList/Yaku6";
-import Yaku1 from "@/components/YakuList/Yaku1";
-import Yaku2 from "@/components/YakuList/Yaku2";
-import YakuMan from "@/components/YakuList/YakuMan";
-import YakuSearch from "@/components/YakuList/YakuSearch";
+import Yaku3 from "@/components/YakuPageComponents/HanList/Han3";
+import Yaku6 from "@/components/YakuPageComponents/HanList/Han6";
+import Yaku1 from "@/components/YakuPageComponents/HanList/Han1";
+import Yaku2 from "@/components/YakuPageComponents/HanList/Han2";
+import YakuMan from "@/components/YakuPageComponents/HanList/HanMax";
+import YakuSearch from "@/components/YakuPageComponents/YakuSearch";
 const Hands = () => {
   return (
     <>

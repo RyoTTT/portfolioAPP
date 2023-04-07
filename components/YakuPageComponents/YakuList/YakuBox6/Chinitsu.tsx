@@ -1,19 +1,18 @@
-import React from 'react'
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Image from "next/image";
+import { Yaku } from "../../Yaku";
 
-const Yaku6 = () => {
+export const Chinitsu = () => {
   return (
-    <>
-    <Box border="solid" margin="2% 0">
-      <Box bg="yellow.100" marginBottom="1.5%">
-        <Heading fontSize="25px">チンイツ(清一色)</Heading>
-        <Box display="flex" fontSize="18px">
-          <Text bg="yellow.300" border="solid" margin="0 1%">5翻</Text>
-          <Text bg="yellow.300" border="solid" marginRight="1%">鳴きOK</Text>
-          <Text bg="yellow.300" border="solid" marginRight="1%">喰い下がり5翻</Text>
-        </Box>
-        </Box>
+    <Yaku
+      title="チンイツ(清一色)"
+      han="6翻"
+      situation="喰い下がり5翻"
+      content="          1種類の数牌のみで面子と雀頭を揃えることで成立する役。
+      "
+      mainColor="yellow.100"
+      subColor="yellow.300"
+    >
         <Box display="flex" justifyContent="center">
           <Image src="/pinzu/p1.gif" alt="test" width={45} height={40}></Image>
           <Image src="/pinzu/p2.gif" alt="test" width={45} height={40}></Image>
@@ -30,9 +29,6 @@ const Yaku6 = () => {
           <Image src="/pinzu/p5.gif" alt="test" width={45} height={40}></Image>
           <Image src="/pinzu/p5.gif" alt="test" width={45} height={40}></Image>
         </Box>
-        <Text fontSize="20px" margin="1% 1%">1種類の数牌のみで面子と雀頭を揃えることからなる役。</Text>   
-    </Box></>
-  )
-}
-
-export default Yaku6
+    </Yaku>
+  );
+};
