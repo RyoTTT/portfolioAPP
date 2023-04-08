@@ -57,6 +57,7 @@ const Mentsu = () => {
                     alt="test"
                     width={50}
                     height={50}
+                    style={{transform: 'rotate(90deg)', marginLeft: '6px', marginBottom: '-8px' }}
                   ></Image>
                 </Box>
               </Td >
@@ -80,6 +81,7 @@ const Mentsu = () => {
                     alt="test"
                     width={50}
                     height={50}
+                    style={{transform: 'rotate(90deg)', marginLeft: '6px', marginBottom: '-8px' }}
                   ></Image>
                 </Box>
               </Td >
@@ -161,6 +163,7 @@ const Mentsu = () => {
                     alt="test"
                     width={50}
                     height={50}
+                    style={{transform: 'rotate(90deg)', marginLeft: '13px', marginBottom: '-20px' }}
                   ></Image>
                 </Box>
               </Td >
@@ -190,6 +193,7 @@ const Mentsu = () => {
                     alt="test"
                     width={50}
                     height={50}
+                    style={{transform: 'rotate(90deg)', marginLeft: '13px', marginBottom: '-20px' }}
                   ></Image>
                 </Box>
               </Td >
