@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Heading, Text, Input, Select,Button } from '@chakra-ui/react';
 
 const YakuSearch = () => {
+  const [searchWords, setsearchWords] = useState<string>("");
+  const getInput = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setsearchWords(e.target.value);
+  }
   return (
     <>
     <Box width="1000px" maxWidth="100%" margin="0 auto">
-      <Heading color="red" fontWeight="bold" textAlign="center">役を検索</Heading>
+      <Heading color="red"  fontWeight="bold" textAlign="center">役を検索</Heading>
       <Box width="500px" maxWidth="100%" margin="5% auto">
         <Box>
-        <Input placeholder='名前を入力' margin="3% auto" ></Input>
+        <Input placeholder='名前を入力' type="text" onChange={(e)=>getInput(e)} margin="3% auto" ></Input>
         <Select placeholder='鳴きの可否'>
           <option value="1">鳴きOK</option>
           <option value="2">喰い下がりアリ</option>
