@@ -15,38 +15,34 @@ const YakuSearch = () => {
     const wordSelectedYakuSearchList = YakuSearchList.filter((yaku)=>(
       yaku.name.match(searchWords)
     ))
-    console.log(wordSelectedYakuSearchList);
- //   if (wordSelectedYakuSearchList === 4) {
-//
-  //    setSelectedYaku(wordSelectedYakuSearchList);
-  //  } else {
+   if (situation === 4) {
+    setSelectedYaku(wordSelectedYakuSearchList);
+ } else {
     const situationSelectedYakuSearchList = wordSelectedYakuSearchList.filter((yaku)=>(
       yaku.situation === situation
     ))
     setSelectedYaku(situationSelectedYakuSearchList);
- // }
+ }
   }
   return (
     <>
     <Box width="1000px" maxWidth="100%" margin="0 auto">
       <Heading color="red"  fontWeight="bold" textAlign="center">役を検索</Heading>
       <Box width="500px" maxWidth="100%" margin="5% auto">
-        <Box>
-        <Input placeholder='名前を入力' type="text" pattern='[¥u3041-¥u3096]*' onChange={(e)=>getInput(e)} margin="3% auto" ></Input>
-        <Select placeholder='鳴きの可否' onChange={(e)=>setSituation(Number(e.target.value))}>
+        <Box margin="5%">
+        <Input placeholder='名前を入力(ひらがなで入力)' type="text" pattern='[¥u3041-¥u3096]*' onChange={(e)=>getInput(e)} margin="3% auto" ></Input>
+        <Select placeholder='鳴きの可否'  onChange={(e)=>setSituation(Number(e.target.value))}>
           <option value="1">鳴きOK</option>
           <option value="2">喰い下がりアリ</option>
           <option value="0">鳴きNG</option>
-          <option value="4">リセットする</option>
+          <option value="4">鳴き条件をリセットして検索</option>
         </Select>
         <Button float="right" size="md" margin="2% auto" bg="blue.100" fontWeight="bold" onClick={yakusearch}>検索</Button>
         </Box>
       </Box>
-      <Box width="1000px" maxWidth="100%" margin="5% auto">
         {selectedYaku.map((Yaku)=>(
-          <Box>{Yaku.HTML}</Box>
+          <Box key={Yaku.name} width="1000px" maxWidth="100%" margin="8% auto">{Yaku.HTML}</Box>
         ))}
-      </Box>
     </Box>
     </>
   )
