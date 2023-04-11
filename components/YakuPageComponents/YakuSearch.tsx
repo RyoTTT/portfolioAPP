@@ -42,7 +42,7 @@ const YakuSearch = () => {
         <Button float="right" size="md" margin="2% auto" bg="blue.100" fontWeight="bold" onClick={yakusearch}>検索</Button>
         </Box>
       </Box>
-      <Box width="1000px" maxWidth="100%" margin="0 auto">
+      <Box width="1000px" maxWidth="100%" margin="5% auto">
         {selectedYaku.map((Yaku)=>(
           <Box>{Yaku.HTML}</Box>
         ))}
