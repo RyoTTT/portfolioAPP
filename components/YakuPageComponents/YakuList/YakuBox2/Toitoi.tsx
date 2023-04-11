@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import Image from "next/image";
 import { Yaku } from "../../Yaku";
 
-export const DoubleReach = () => {
+export const ToiToi = () => {
   return (
     <Yaku
       title="ダブルリーチ(ダブル立直)"

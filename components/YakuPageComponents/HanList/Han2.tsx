@@ -11,6 +11,7 @@ import { Sananko } from "../YakuList/YakuBox2/Sananko";
 import { Sankantsu } from "../YakuList/YakuBox2/Sankantsu";
 import { Shosangen } from "../YakuList/YakuBox2/Shosangen";
 import { Honroutou } from "../YakuList/YakuBox2/Honrourou";
+import { ToiToi } from "../YakuList/YakuBox2/Toitoi";
 
 const Yaku2 = () => {
   return (
@@ -25,6 +26,7 @@ const Yaku2 = () => {
       <Sankantsu />
       <Shosangen />
       <Honroutou />
+      <ToiToi />
     </>
   );
 };
