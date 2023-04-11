@@ -4,7 +4,7 @@ import { YakuObject, YakuSearchList } from './YakuForSearch';
 
 const YakuSearch = () => {
   const [searchWords, setsearchWords] = useState<string>("");
-  const [situation, setSituation]  = useState<number | null>(null);
+  const [situation, setSituation]  = useState<number | null>(4);
   const [selectedYaku , setSelectedYaku] = useState<YakuObject[]>([]);
 
   const getInput = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -15,10 +15,16 @@ const YakuSearch = () => {
     const wordSelectedYakuSearchList = YakuSearchList.filter((yaku)=>(
       yaku.name.match(searchWords)
     ))
+    console.log(wordSelectedYakuSearchList);
+ //   if (wordSelectedYakuSearchList === 4) {
+//
+  //    setSelectedYaku(wordSelectedYakuSearchList);
+  //  } else {
     const situationSelectedYakuSearchList = wordSelectedYakuSearchList.filter((yaku)=>(
       yaku.situation === situation
     ))
     setSelectedYaku(situationSelectedYakuSearchList);
+ // }
   }
   return (
     <>
@@ -31,7 +37,7 @@ const YakuSearch = () => {
           <option value="1">鳴きOK</option>
           <option value="2">喰い下がりアリ</option>
           <option value="0">鳴きNG</option>
-          <option value="null">リセットする</option>
+          <option value="4">リセットする</option>
         </Select>
         <Button float="right" size="md" margin="2% auto" bg="blue.100" fontWeight="bold" onClick={yakusearch}>検索</Button>
         </Box>
