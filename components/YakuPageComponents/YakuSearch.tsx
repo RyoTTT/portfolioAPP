@@ -10,7 +10,7 @@ const YakuSearch = () => {
   const getInput = (e:React.ChangeEvent<HTMLInputElement>) => {
     setsearchWords(e.target.value);
   }
-//名前だけで検索したい時シチュエーションが邪魔で反映されない、シチュエーションで絞り込みをかけたくない時はどうすればいいか
+
   const yakusearch = () =>{
     const wordSelectedYakuSearchList = YakuSearchList.filter((yaku)=>(
       yaku.name.match(searchWords)
