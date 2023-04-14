@@ -15,7 +15,7 @@ const YakuSearch = () => {
     const wordSelectedYakuSearchList = YakuSearchList.filter((yaku)=>(
       yaku.name.match(searchWords)
     ))
-   if (situation === 4) {
+  if (situation === 4) {
     setSelectedYaku(wordSelectedYakuSearchList);
  } else {
     const situationSelectedYakuSearchList = wordSelectedYakuSearchList.filter((yaku)=>(
@@ -35,7 +35,7 @@ const YakuSearch = () => {
           <option value="1">鳴きOK</option>
           <option value="2">喰い下がりアリ</option>
           <option value="0">鳴きNG</option>
-          <option value="4">鳴き条件をリセットして検索</option>
+          <option value="4">鳴き条件を考慮せず検索</option>
         </Select>
         <Button float="right" size="md" margin="2% auto" bg="blue.100" fontWeight="bold" onClick={yakusearch}>検索</Button>
         </Box>

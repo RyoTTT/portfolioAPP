@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import CalculationHome from "./calhome";
 import { Box, Text, Button, ButtonGroup, Center } from "@chakra-ui/react";
-import { convertCompilerOptionsFromJson } from "typescript";
-//役のボタンは一回しか押せないようにする+ボタンを押すと色が変わる機能が必要。
-//ツモ、ピンフツモ、七対子、親版の点数計算実装が必要。
+import YakuStateButton from "@/components/YakustateButtons/YakuStateButton";
+import YakuStateButtonForTsumo from "@/components/YakustateButtons/YakuStateButtonForTsumo";
+import YakuStateButtonForPinhu from "@/components/YakustateButtons/YakuStateButtonForPinhu";
+import YakuStateButtonForChitoitsu from "@/components/YakustateButtons/YakuStateButtonForChitoitsu";
+import YakuStateButtonForChinitsu5 from "@/components/YakustateButtons/YakuStateButtonForChinitsu5";
+import YakuStateButtonForChinitsu6 from "@/components/YakustateButtons/YakuStateButtonForChinitsu6";
+
 //複合しないパターンにエラー実装が必要。
 //Switchで〜以上という条件分岐させたい
 const ScoreCal = () => {
@@ -15,7 +19,7 @@ const ScoreCal = () => {
   const [hanCount, setHanCount] = useState<number>(0);
   const [doraCount, setDoraCount] = useState<number>(0);
   const [fuCount, setFuCount] = useState<number>(20);
-  const [Yakunames, setYakunames] = useState<string[]>([]);
+  const [yakuStateList, setYakuStateList] = useState<string[]>([]);  
   const [score, setScore] = useState<number>(0);
   const [tsumoScore, setTsumoScore] = useState<tsumoScoreType[]>([]);
   const [oyaTsumoScore, setOyaTsumoScore] = useState<number>(0);
@@ -34,30 +38,10 @@ const ScoreCal = () => {
   const han3Add = () => {
     setHanCount(hanCount + 3);
   }
-  const han5Add = () => {
-    setHanCount(hanCount + 5);
-    setYakunames([...Yakunames,"チンイツ"])
-  }
-  const han6Add = () => {
-    setHanCount(hanCount + 6);
-    setYakunames([...Yakunames,"チンイツ"])
-  }
-  const tsumo= () => { 
-    setYakunames([...Yakunames,"ツモ"]);
-    setTsumoCheck(!tsumoCheck);
-  }
-  const pinhu = () => {
-    setYakunames([...Yakunames,"平和"]);
-    setPinhuCheck(!pinhuCheck);
-  }
-  const chitoitsu = () => {
-    setYakunames([...Yakunames,"七対子"])
-    setChitoitsuCheck(true);
-  }
 
 //計算リセット
   const resetScore = () => {
-    setYakunames([]);
+    setYakuStateList([]);
     setHanCount(20);
     setHanCount(0);
     setScore(0);
@@ -822,9 +806,8 @@ else {
 } //親の計算終了
 } // calculation関数  終了
 
-
-//これを点数表示に表示させたいL.962
-const scorePreview = () => {
+//TODO これを点数表示に表示させたいL.962、コンポーネント化して別ファイルへ
+const ScorePreview = () => {
   if (oyaCheck === true && tsumoCheck === true) {
     return (
       <Box>{score}点（{oyaTsumoScore}オール）</Box>
@@ -835,15 +818,23 @@ const scorePreview = () => {
     )
   } else if (oyaCheck === false && tsumoCheck === true) {
     return (
-      <Box>{score}点（{tsumoScore.map((tumo) => (
-        <Text key={tsumo.name}>{tumo.name}:{tumo.score}点</Text>
-      ))}）</Box>
+      <Box>{tsumoScore.map((tumo) => (
+        <Box key={tumo.name}>{tumo.name}:{tumo.score}点</Box>
+      ))}
+      </Box>
     )
   } else if (oyaCheck === false && tsumoCheck === false) {
     return (
       <Box>{score}点</Box>
     )
   }
+  return (
+    <Box>エラー</Box>
+  )
+}
+
+const changeYakuState = (name: string) => {
+  setYakuStateList([...yakuStateList, name])
 }
 
   return (
@@ -865,55 +856,55 @@ const scorePreview = () => {
         <Box>
           <Text>1翻役</Text>
           <ButtonGroup onClick={han1Add}>
-            <Button onClick={()=>setYakunames([...Yakunames,"立直"])}>立直</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"一発"])}>一発</Button>
-            <Button onClick={tsumo}>ツモ</Button>
-            <Button onClick={pinhu}>平和</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"断么"])}>断么</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"白"])}>白</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"發"])}>發</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"中"])}>中</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"自風"])}>自風</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"場風"])}>場風</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"一盃口"])}>一盃口</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"ハイテイ"])}>ハイテイ</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"嶺上開花"])}>嶺上開花</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"チャンカン"])}>チャンカン</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"三色同順"])}>三色同順(鳴き)</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"一気通貫"])}>一気通貫(鳴き)</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"チャンタ"])}>チャンタ(鳴き)</Button>
+          <YakuStateButton name='立直' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+          <YakuStateButton name='一発' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+          <YakuStateButtonForTsumo name='ツモ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setTsumoCheck={setTsumoCheck} />
+          <YakuStateButtonForPinhu name='平和' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setPinhuCheck={setPinhuCheck} />
+            <YakuStateButton name='断么' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='一盃口' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='白' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='發' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='中' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='自風牌' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='場風牌' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='ハイテイ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='嶺上開花' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='三色同順(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='チャンタ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='一気通貫(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
           </ButtonGroup>
         </Box>
         <Box>
           <Text>2翻役</Text>
           <ButtonGroup onClick={han2Add}>
-            <Button onClick={()=>setYakunames([...Yakunames,"ダブル立直"])}>ダブル立直</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"三色同順"])}>三色同順</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"三色同刻"])}>三色同刻</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"三暗刻"])}>三暗刻</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"一気通貫"])}>一気通貫</Button>
-            <Button onClick={chitoitsu}>七対子</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"トイトイ"])}>トイトイ</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"チャンタ"])}>チャンタ</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"三槓子"])}>三槓子</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"小三元"])}>小三元</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"混老頭"])}>混老頭</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"混一色"])}>混一色(鳴き)</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"ジュンチャン"])}>ジュンチャン(鳴き)</Button>
+            <YakuStateButton name='ダブル立直' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='三色同順' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='三色同刻' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='三暗刻' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='一気通貫' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButtonForChitoitsu name='七対子' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setChitoitsuCheck={setChitoitsuCheck} />
+            <YakuStateButton name='トイトイ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='チャンタ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='三槓子' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='小三元' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='混老頭' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='混一色(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton name='ジュンチャン(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
           </ButtonGroup>
         </Box>
         <Box onClick={han3Add}>
           <Text>3翻役</Text>
           <ButtonGroup>
-            <Button onClick={()=>setYakunames([...Yakunames,"混一色"])}>混一色</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"ジュンチャン"])}>ジュンチャン</Button>
-            <Button onClick={()=>setYakunames([...Yakunames,"二盃口"])}>二盃口</Button>
+          <YakuStateButton name='混一色' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+          <YakuStateButton name='ジュンチャン' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+          <YakuStateButton name='二盃口' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
           </ButtonGroup>
         </Box>
         <Box>
           <Text>その他</Text>
-          <Button onClick={han5Add}>チンイツ(鳴き)(5翻)</Button>
-          <Button onClick={han6Add}>チンイツ(6翻)</Button>
+          <YakuStateButtonForChinitsu5  name='チンイツ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setHanCount={setHanCount} hanCount={hanCount} />
+          <YakuStateButtonForChinitsu6  name='チンイツ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setHanCount={setHanCount} hanCount={hanCount} />
+
         </Box>
         <Box display="flex">
           <Button onClick={()=>setDoraCount(doraCount + 1)}>ドラ+1</Button>
@@ -959,8 +950,8 @@ const scorePreview = () => {
         <Button float="right" onClick={calculation}>計算する</Button>
       </Box>
       <Center>
-        <Box>{scorePreview}</Box>
-        {Yakunames.map((yaku,index)=>(
+        <ScorePreview />
+        {yakuStateList.map((yaku,index)=>(
           <Box key={index}>{yaku}</Box>
         )
       )}
