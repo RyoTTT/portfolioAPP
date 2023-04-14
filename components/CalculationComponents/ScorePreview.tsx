@@ -17,22 +17,22 @@ const ScorePreview = (props:Props) => {
     const {score,oyaTsumoScore,tsumoScore,oyaCheck,tsumoCheck} = props;
     if (oyaCheck === true && tsumoCheck === true) {
       return (
-        <Box>{score}点（{oyaTsumoScore}オール）</Box>
+        <Box textAlign="center" fontSize="45px" color="red">{score}点（{oyaTsumoScore}オール）</Box>
       )
     } else if (oyaCheck === true && tsumoCheck === false) {
       return (
-        <Box>{score}点</Box>
+        <Box textAlign="center" fontSize="45px" color="red">{score}点</Box>
       )
     } else if (oyaCheck === false && tsumoCheck === true) {
       return (
-        <Box>{tsumoScore.map((tumo) => (
+        <Box textAlign="center" fontSize="45px" color="red">{tsumoScore.map((tumo) => (
           <Box key={tumo.name}>{tumo.name}:{tumo.score}点</Box>
         ))}
         </Box>
       )
     } else if (oyaCheck === false && tsumoCheck === false) {
       return (
-        <Box>{score}点</Box>
+        <Box textAlign="center" fontSize="45px" color="red">{score}点</Box>
       )
     }
     return (

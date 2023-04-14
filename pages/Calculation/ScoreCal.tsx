@@ -188,25 +188,25 @@ const ScoreCal = () => {
               case 3:
                 setTsumoScore([
                   { name: "親", score: 2000 },
-                  { name: "子", score: 400 },
+                  { name: "子", score: 1000 },
                 ]);
                 break;
               case 4:
                 setTsumoScore([
                   { name: "親", score: 2600 },
-                  { name: "子", score: 400 },
+                  { name: "子", score: 1300 },
                 ]);
                 break;
               case 5:
                 setTsumoScore([
                   { name: "親", score: 3200 },
-                  { name: "子", score: 400 },
+                  { name: "子", score: 1600 },
                 ]);
                 break;
               case 6:
                 setTsumoScore([
                   { name: "親", score: 3900 },
-                  { name: "子", score: 400 },
+                  { name: "子", score: 2000 },
                 ]);
                 break;
               case 7:
@@ -298,7 +298,7 @@ const ScoreCal = () => {
             break;
           case 11:
             setTsumoScore([
-              { name: "親", score: 1200 },
+              { name: "親", score: 12000 },
               { name: "子", score: 6000 },
             ]);
             break;
@@ -1284,14 +1284,14 @@ const ScoreCal = () => {
           <Text>待ち(ペンチャン・カンチャン・タンキ・ノベタン)のみ</Text>
           <Button onClick={() => setFuCount(fuCount + 2)}>待ち</Button>
         </Box>
-        <Text>{fuCount}符</Text>
+        <Text textAlign="center" fontSize="35px" fontWeight="bold">{fuCount}符</Text>
       </Box>
       <Box>
         <Button float="right" onClick={calculation}>
           計算する
         </Button>
       </Box>
-      <Center>
+      
         <ScorePreview
           score={score}
           oyaTsumoScore={oyaTsumoScore}
@@ -1300,11 +1300,12 @@ const ScoreCal = () => {
           tsumoCheck={tsumoCheck}
         />
         {yakuStateList.map((yaku, index) => (
-          <Box key={index} fontSize="25px">{yaku}</Box>
+          <Box key={index} fontSize="25px" flexDirection="column" borderBottom="solid" width="200px" maxWidth="100%" margin="0 auto" textAlign="center">★{yaku}</Box>
         ))}
+        <Box>
         <Button>記録する</Button>
         <Button onClick={resetScore}>リセットする</Button>
-      </Center>
+        </Box>
     </>
   );
 };
