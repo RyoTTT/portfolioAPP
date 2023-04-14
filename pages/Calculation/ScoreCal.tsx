@@ -1242,6 +1242,7 @@ const ScoreCal = () => {
           <Button onClick={() => setDoraCount(doraCount + 1)}>ドラ+1</Button>
           <Text fontSize="20px" paddingTop="5px" color="red" fontWeight="bold">ドラ:{doraCount}</Text>
         </Box>
+        <Box textAlign="center" fontSize="35px" fontWeight="bold">合計:{hanCount}翻</Box>
       </Box>
       <Box border="solid" margin="1%">
         <Text fontSize="20px" fontWeight="bold" >
@@ -1284,7 +1285,7 @@ const ScoreCal = () => {
           <Text>待ち(ペンチャン・カンチャン・タンキ・ノベタン)のみ</Text>
           <Button onClick={() => setFuCount(fuCount + 2)}>待ち</Button>
         </Box>
-        <Text textAlign="center" fontSize="35px" fontWeight="bold">{fuCount}符</Text>
+        <Text textAlign="center" fontSize="35px" fontWeight="bold">合計:{fuCount}符</Text>
       </Box>
       <Box>
         <Button float="right" onClick={calculation}>
@@ -1309,6 +1310,5 @@ const ScoreCal = () => {
     </>
   );
 };
-//TODO L1295周辺見栄え良くする。
 //TODO 親、本場機能確認、実装
 export default ScoreCal;
