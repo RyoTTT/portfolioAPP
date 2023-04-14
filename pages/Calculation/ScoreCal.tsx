@@ -1,45 +1,46 @@
 import React, { useState } from "react";
 import CalculationHome from "./calhome";
 import { Box, Text, Button, ButtonGroup, Center } from "@chakra-ui/react";
-import YakuStateButton from "@/components/YakustateButtons/YakuStateButton";
-import YakuStateButtonForTsumo from "@/components/YakustateButtons/YakuStateButtonForTsumo";
-import YakuStateButtonForPinhu from "@/components/YakustateButtons/YakuStateButtonForPinhu";
-import YakuStateButtonForChitoitsu from "@/components/YakustateButtons/YakuStateButtonForChitoitsu";
-import YakuStateButtonForChinitsu5 from "@/components/YakustateButtons/YakuStateButtonForChinitsu5";
-import YakuStateButtonForChinitsu6 from "@/components/YakustateButtons/YakuStateButtonForChinitsu6";
+import YakuStateButton from "@/components/CalculationComponents/YakustateButtons/YakuStateButton";
+import YakuStateButtonForTsumo from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForTsumo";
+import YakuStateButtonForPinhu from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForPinhu";
+import YakuStateButtonForChitoitsu from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForChitoitsu";
+import YakuStateButtonForChinitsu5 from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForChinitsu5";
+import YakuStateButtonForChinitsu6 from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForChinitsu6";
+import ScorePreview from "@/components/CalculationComponents/ScorePreview";
 
 //複合しないパターンにエラー実装が必要。
 //Switchで〜以上という条件分岐させたい
 const ScoreCal = () => {
   type tsumoScoreType = {
-    name:string,
-    score:number
-  }
-//点数計算に必要な数値を管理
+    name: string;
+    score: number;
+  };
+  //点数計算に必要な数値を管理
   const [hanCount, setHanCount] = useState<number>(0);
   const [doraCount, setDoraCount] = useState<number>(0);
   const [fuCount, setFuCount] = useState<number>(20);
-  const [yakuStateList, setYakuStateList] = useState<string[]>([]);  
+  const [yakuStateList, setYakuStateList] = useState<string[]>([]);
   const [score, setScore] = useState<number>(0);
   const [tsumoScore, setTsumoScore] = useState<tsumoScoreType[]>([]);
   const [oyaTsumoScore, setOyaTsumoScore] = useState<number>(0);
-//特殊計算になる役を管理
+  //特殊計算になる役を管理
   const [tsumoCheck, setTsumoCheck] = useState<boolean>(false);
   const [pinhuCheck, setPinhuCheck] = useState<boolean>(false);
   const [chitoitsuCheck, setChitoitsuCheck] = useState<boolean>(false);
   const [oyaCheck, setOyaCheck] = useState<boolean>(false);
-//役数カウント
+  //役数カウント
   const han1Add = () => {
-    setHanCount(hanCount + 1); 
-  }
+    setHanCount(hanCount + 1);
+  };
   const han2Add = () => {
     setHanCount(hanCount + 2);
-  }
+  };
   const han3Add = () => {
     setHanCount(hanCount + 3);
-  }
+  };
 
-//計算リセット
+  //計算リセット
   const resetScore = () => {
     setYakuStateList([]);
     setHanCount(20);
@@ -49,917 +50,1264 @@ const ScoreCal = () => {
     setTsumoCheck(false);
     setPinhuCheck(false);
     setChitoitsuCheck(false);
-  }
+  };
 
-//計算機
-const calculation = () => {
-if (oyaCheck === false) {
-  if (pinhuCheck === false && tsumoCheck === true && chitoitsuCheck === false) {
-    switch(hanCount+doraCount) {
-      case 1:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setTsumoScore([{name:"親",score:500},{name:"子",score:300}])
-          break;
-        case 4:
-          setTsumoScore([{name:"親",score:700},{name:"子",score:400}])
-          break;
-        case 5:
-          setTsumoScore([{name:"親",score:800},{name:"子",score:400}])
-          break;
-        case 6:
-          setTsumoScore([{name:"親",score:1000},{name:"子",score:500}])
-          break;
-        case 7:
-          setTsumoScore([{name:"親",score:1200},{name:"子",score:600}])
+  //計算機
+  const calculation = () => {
+    if (oyaCheck === false) {
+      if (
+        pinhuCheck === false &&
+        tsumoCheck === true &&
+        chitoitsuCheck === false
+      ) {
+        switch (hanCount + doraCount) {
+          case 1:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setTsumoScore([
+                  { name: "親", score: 500 },
+                  { name: "子", score: 300 },
+                ]);
+                break;
+              case 4:
+                setTsumoScore([
+                  { name: "親", score: 700 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 5:
+                setTsumoScore([
+                  { name: "親", score: 800 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 6:
+                setTsumoScore([
+                  { name: "親", score: 1000 },
+                  { name: "子", score: 500 },
+                ]);
+                break;
+              case 7:
+                setTsumoScore([
+                  { name: "親", score: 1200 },
+                  { name: "子", score: 600 },
+                ]);
+                break;
+              case 8:
+                setTsumoScore([
+                  { name: "親", score: 1300 },
+                  { name: "子", score: 700 },
+                ]);
+                break;
+              case 9:
+                setTsumoScore([
+                  { name: "親", score: 1500 },
+                  { name: "子", score: 800 },
+                ]);
+                break;
+              case 10:
+                setTsumoScore([
+                  { name: "親", score: 1600 },
+                  { name: "子", score: 800 },
+                ]);
+                break;
+              case 11:
+                setTsumoScore([
+                  { name: "親", score: 1800 },
+                  { name: "子", score: 900 },
+                ]);
+                break;
+              default:
+                alert("点数計算できません");
+                break;
+            }
             break;
-        case 8:
-          setTsumoScore([{name:"親",score:1300},{name:"子",score:700}])
-          break;
-        case 9:
-          setTsumoScore([{name:"親",score:1500},{name:"子",score:800}])
-          break;
-        case 10:
-          setTsumoScore([{name:"親",score:1600},{name:"子",score:800}])
-          break;
-        case 11:
-          setTsumoScore([{name:"親",score:1800},{name:"子",score:900}])
-          break;
-        default:
-          alert("点数計算できません");
-          break;
-      };
-      break;
-      case 2:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setTsumoScore([{name:"親",score:1000},{name:"子",score:500}])
-          break;
-        case 4:
-          setTsumoScore([{name:"親",score:1300},{name:"子",score:700}])
-          break;
-        case 5:
-          setTsumoScore([{name:"親",score:1600},{name:"子",score:800}])
-          break;
-        case 6:
-          setTsumoScore([{name:"親",score:2000},{name:"子",score:1000}])
-          break;
-        case 7:
-          setTsumoScore([{name:"親",score:2300},{name:"子",score:1200}])
+          case 2:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setTsumoScore([
+                  { name: "親", score: 1000 },
+                  { name: "子", score: 500 },
+                ]);
+                break;
+              case 4:
+                setTsumoScore([
+                  { name: "親", score: 1300 },
+                  { name: "子", score: 700 },
+                ]);
+                break;
+              case 5:
+                setTsumoScore([
+                  { name: "親", score: 1600 },
+                  { name: "子", score: 800 },
+                ]);
+                break;
+              case 6:
+                setTsumoScore([
+                  { name: "親", score: 2000 },
+                  { name: "子", score: 1000 },
+                ]);
+                break;
+              case 7:
+                setTsumoScore([
+                  { name: "親", score: 2300 },
+                  { name: "子", score: 1200 },
+                ]);
+                break;
+              case 8:
+                setTsumoScore([
+                  { name: "親", score: 2600 },
+                  { name: "子", score: 1300 },
+                ]);
+                break;
+              case 9:
+                setTsumoScore([
+                  { name: "親", score: 2900 },
+                  { name: "子", score: 1500 },
+                ]);
+                break;
+              case 10:
+                setTsumoScore([
+                  { name: "親", score: 3200 },
+                  { name: "子", score: 1600 },
+                ]);
+                break;
+              case 11:
+                setTsumoScore([
+                  { name: "親", score: 3600 },
+                  { name: "子", score: 1800 },
+                ]);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
             break;
-        case 8:
-          setTsumoScore([{name:"親",score:2600},{name:"子",score:1300}])
-          break;
-        case 9:
-          setTsumoScore([{name:"親",score:2900},{name:"子",score:1500}])
-          break;
-        case 10:
-          setTsumoScore([{name:"親",score:3200},{name:"子",score:1600}])
-          break;
-        case 11:
-          setTsumoScore([{name:"親",score:3600},{name:"子",score:1800}])
-          break;
-        default:
-          alert("符計算が間違ってます");
-          break;
-      }
-      break;
-      case 3:
-        switch(Math.ceil(fuCount/10)) {
           case 3:
-            setTsumoScore([{name:"親",score:2000},{name:"子",score:400}])
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setTsumoScore([
+                  { name: "親", score: 2000 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 4:
+                setTsumoScore([
+                  { name: "親", score: 2600 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 5:
+                setTsumoScore([
+                  { name: "親", score: 3200 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 6:
+                setTsumoScore([
+                  { name: "親", score: 3900 },
+                  { name: "子", score: 400 },
+                ]);
+                break;
+              case 7:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              case 8:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              case 9:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              case 10:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              case 11:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
             break;
           case 4:
-            setTsumoScore([{name:"親",score:2600},{name:"子",score:400}])
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setTsumoScore([
+                  { name: "親", score: 3900 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+              default:
+                setTsumoScore([
+                  { name: "親", score: 4000 },
+                  { name: "子", score: 2000 },
+                ]);
+                break;
+            }
             break;
           case 5:
-            setTsumoScore([{name:"親",score:3200},{name:"子",score:400}])
+            setTsumoScore([
+              { name: "親", score: 4000 },
+              { name: "子", score: 2000 },
+            ]);
             break;
           case 6:
-            setTsumoScore([{name:"親",score:3900},{name:"子",score:400}])
+            setTsumoScore([
+              { name: "親", score: 6000 },
+              { name: "子", score: 3000 },
+            ]);
             break;
           case 7:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+            setTsumoScore([
+              { name: "親", score: 6000 },
+              { name: "子", score: 3000 },
+            ]);
             break;
           case 8:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+            setTsumoScore([
+              { name: "親", score: 8000 },
+              { name: "子", score: 4000 },
+            ]);
             break;
           case 9:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+            setTsumoScore([
+              { name: "親", score: 8000 },
+              { name: "子", score: 4000 },
+            ]);
             break;
           case 10:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+            setTsumoScore([
+              { name: "親", score: 8000 },
+              { name: "子", score: 4000 },
+            ]);
             break;
           case 11:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+            setTsumoScore([
+              { name: "親", score: 1200 },
+              { name: "子", score: 6000 },
+            ]);
             break;
-          default:
-            alert("符計算が間違ってます");
-            break;
-        }
-        break;
-      case 4:
-        switch(Math.ceil(fuCount/10)) {
-          case 3:
-            setTsumoScore([{name:"親",score:3900},{name:"子",score:2000}])
-            break;
-          default:
-            setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
+          case 12:
+            setTsumoScore([
+              { name: "親", score: 12000 },
+              { name: "子", score: 6000 },
+            ]);
             break;
         }
-        break;
-      case 5:
-        setTsumoScore([{name:"親",score:4000},{name:"子",score:2000}])
-        break;
-      case 6:
-        setTsumoScore([{name:"親",score:6000},{name:"子",score:3000}])
-        break;
-      case 7:
-        setTsumoScore([{name:"親",score:6000},{name:"子",score:3000}])
-        break;
-      case 8:
-        setTsumoScore([{name:"親",score:8000},{name:"子",score:4000}])
-        break;
-      case 9:
-        setTsumoScore([{name:"親",score:8000},{name:"子",score:4000}])
-        break;      
-      case 10:
-        setTsumoScore([{name:"親",score:8000},{name:"子",score:4000}])
-        break;
-      case 11:
-        setTsumoScore([{name:"親",score:1200},{name:"子",score:6000}])
-        break;
-      case 12:
-        setTsumoScore([{name:"親",score:12000},{name:"子",score:6000}])
-        break;
-}
-} //ツモの計算
-  else if (pinhuCheck === true && tsumoCheck === true && chitoitsuCheck === false) {
-  if (hanCount + doraCount === 2) {
-    const han2PinhuTsmoScore = [{name:"親",score:700},{name:"子",score:400}]
-    setTsumoScore(han2PinhuTsmoScore);
-  } else if (hanCount + doraCount === 3) {
-    const han3PinhuTsmoScore = [{name:"親",score:1300},{name:"子",score:700}]
-    setTsumoScore(han3PinhuTsmoScore);
-  } else if (hanCount + doraCount === 4) {
-    const han4PinhuTsmoScore = [{name:"親",score:2600},{name:"子",score:1300}]
-    setTsumoScore(han4PinhuTsmoScore);
-  } else if (hanCount + doraCount === 5) {
-    const han5PinhuTsmoScore = [{name:"親",score:4000},{name:"子",score:2000}]
-    setTsumoScore(han5PinhuTsmoScore);
-  } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-      const hanemanPinhuTsmoScore = [{name:"親",score:6000},{name:"子",score:3000}]
-      setTsumoScore(hanemanPinhuTsmoScore);
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-    const baimanPinhuTsmoScore = [{name:"親",score:8000},{name:"子",score:4000}]
-    setTsumoScore(baimanPinhuTsmoScore);
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-    const sanbaimanPinhuTsmoScore = [{name:"親",score:12000},{name:"子",score:6000}]
-    setTsumoScore(sanbaimanPinhuTsmoScore);
-  } else {
-    const maxPinhuTsmoScore = [{name:"親",score:16000},{name:"子",score:8000}]
-    setTsumoScore(maxPinhuTsmoScore);
-  }
-} //ピンフツモの計算
-  else if (pinhuCheck === false && tsumoCheck === true && chitoitsuCheck === true) {
-  if (hanCount + doraCount === 3) {
-    const han3ChitoitsuTsmoScore = [{name:"親",score:1600},{name:"子",score:800}]
-    setTsumoScore(han3ChitoitsuTsmoScore);
-  } else if (hanCount + doraCount === 4) {
-    const han4ChitoitsuTsmoScore = [{name:"親",score:3200},{name:"子",score:1600}]
-    setTsumoScore(han4ChitoitsuTsmoScore);
-  } else if (hanCount + doraCount === 5) {
-    const han5ChitoitsuTsmoScore = [{name:"親",score:4000},{name:"子",score:2000}]
-    setTsumoScore(han5ChitoitsuTsmoScore);
-  } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-      const hanemanChitoitsuTsmoScore = [{name:"親",score:6000},{name:"子",score:3000}]
-      setTsumoScore(hanemanChitoitsuTsmoScore);
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-    const baimanChitoitsuTsmoScore = [{name:"親",score:8000},{name:"子",score:4000}]
-    setTsumoScore(baimanChitoitsuTsmoScore);
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-    const sanbaimanChitoitsuTsmoScore = [{name:"親",score:12000},{name:"子",score:6000}]
-    setTsumoScore(sanbaimanChitoitsuTsmoScore);
-  } else {
-    const maxChitoitsuTsmoScore = [{name:"親",score:16000},{name:"子",score:8000}]
-    setTsumoScore(maxChitoitsuTsmoScore);
-  }
-} //七対子ツモの計算
-  else if (pinhuCheck === false && tsumoCheck === false && chitoitsuCheck === true) {
-  if (hanCount + doraCount === 2) {
-    setScore(1600);
-  } else if (hanCount + doraCount === 3) {
-    setScore(3200);
-  } else if (hanCount + doraCount === 4) {
-    setScore(6400);
-  } else if (hanCount + doraCount === 5) {
-    setScore(8000);
-  } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-    setScore(12000);
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-    setScore(16000);
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-    setScore(18000);
-  } else {
-    setScore(24000);
-  }
-} //七対子の計算
-  else {
-   switch(hanCount+doraCount) {
-      case 1:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setScore(1000);
-          break;
-        case 4:
-          setScore(1300);
-          break;
-        case 5:
+      } //ツモの計算
+      else if (
+        pinhuCheck === true &&
+        tsumoCheck === true &&
+        chitoitsuCheck === false
+      ) {
+        if (hanCount + doraCount === 2) {
+          const han2PinhuTsmoScore = [
+            { name: "親", score: 700 },
+            { name: "子", score: 400 },
+          ];
+          setTsumoScore(han2PinhuTsmoScore);
+        } else if (hanCount + doraCount === 3) {
+          const han3PinhuTsmoScore = [
+            { name: "親", score: 1300 },
+            { name: "子", score: 700 },
+          ];
+          setTsumoScore(han3PinhuTsmoScore);
+        } else if (hanCount + doraCount === 4) {
+          const han4PinhuTsmoScore = [
+            { name: "親", score: 2600 },
+            { name: "子", score: 1300 },
+          ];
+          setTsumoScore(han4PinhuTsmoScore);
+        } else if (hanCount + doraCount === 5) {
+          const han5PinhuTsmoScore = [
+            { name: "親", score: 4000 },
+            { name: "子", score: 2000 },
+          ];
+          setTsumoScore(han5PinhuTsmoScore);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          const hanemanPinhuTsmoScore = [
+            { name: "親", score: 6000 },
+            { name: "子", score: 3000 },
+          ];
+          setTsumoScore(hanemanPinhuTsmoScore);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          const baimanPinhuTsmoScore = [
+            { name: "親", score: 8000 },
+            { name: "子", score: 4000 },
+          ];
+          setTsumoScore(baimanPinhuTsmoScore);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          const sanbaimanPinhuTsmoScore = [
+            { name: "親", score: 12000 },
+            { name: "子", score: 6000 },
+          ];
+          setTsumoScore(sanbaimanPinhuTsmoScore);
+        } else {
+          const maxPinhuTsmoScore = [
+            { name: "親", score: 16000 },
+            { name: "子", score: 8000 },
+          ];
+          setTsumoScore(maxPinhuTsmoScore);
+        }
+      } //ピンフツモの計算
+      else if (
+        pinhuCheck === false &&
+        tsumoCheck === true &&
+        chitoitsuCheck === true
+      ) {
+        if (hanCount + doraCount === 3) {
+          const han3ChitoitsuTsmoScore = [
+            { name: "親", score: 1600 },
+            { name: "子", score: 800 },
+          ];
+          setTsumoScore(han3ChitoitsuTsmoScore);
+        } else if (hanCount + doraCount === 4) {
+          const han4ChitoitsuTsmoScore = [
+            { name: "親", score: 3200 },
+            { name: "子", score: 1600 },
+          ];
+          setTsumoScore(han4ChitoitsuTsmoScore);
+        } else if (hanCount + doraCount === 5) {
+          const han5ChitoitsuTsmoScore = [
+            { name: "親", score: 4000 },
+            { name: "子", score: 2000 },
+          ];
+          setTsumoScore(han5ChitoitsuTsmoScore);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          const hanemanChitoitsuTsmoScore = [
+            { name: "親", score: 6000 },
+            { name: "子", score: 3000 },
+          ];
+          setTsumoScore(hanemanChitoitsuTsmoScore);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          const baimanChitoitsuTsmoScore = [
+            { name: "親", score: 8000 },
+            { name: "子", score: 4000 },
+          ];
+          setTsumoScore(baimanChitoitsuTsmoScore);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          const sanbaimanChitoitsuTsmoScore = [
+            { name: "親", score: 12000 },
+            { name: "子", score: 6000 },
+          ];
+          setTsumoScore(sanbaimanChitoitsuTsmoScore);
+        } else {
+          const maxChitoitsuTsmoScore = [
+            { name: "親", score: 16000 },
+            { name: "子", score: 8000 },
+          ];
+          setTsumoScore(maxChitoitsuTsmoScore);
+        }
+      } //七対子ツモの計算
+      else if (
+        pinhuCheck === false &&
+        tsumoCheck === false &&
+        chitoitsuCheck === true
+      ) {
+        if (hanCount + doraCount === 2) {
           setScore(1600);
-          break;
-        case 6:
-          setScore(2000);
-          break;
-        case 7:
-            setScore(2300);
-            break;
-        case 8:
-          setScore(2600);
-          break;
-        case 9:
-          setScore(2900);
-          break;
-        case 10:
+        } else if (hanCount + doraCount === 3) {
           setScore(3200);
-          break;
-        case 11:
-          setScore(3600);
-          break;
-        default:
-          alert("点数計算できません");
-          break;
-      };
-      break;
-      case 2:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setScore(2000);
-          break;
-        case 4:
-          setScore(2600);
-          break;
-        case 5:
-          setScore(3200);
-          break;
-        case 6:
-          setScore(3900);
-          break;
-        case 7:
-            setScore(4500);
-            break;
-        case 8:
-          setScore(5200);
-          break;
-        case 9:
-          setScore(5800);
-          break;
-        case 10:
+        } else if (hanCount + doraCount === 4) {
           setScore(6400);
-          break;
-        case 11:
-          setScore(7100);
-          break;
-        default:
-          alert("符計算が間違ってます");
-          break;
-      }
-      break;
-      case 3:
-        switch(Math.ceil(fuCount/10)) {
+        } else if (hanCount + doraCount === 5) {
+          setScore(8000);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          setScore(12000);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          setScore(16000);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          setScore(18000);
+        } else {
+          setScore(24000);
+        }
+      } //七対子の計算
+      else {
+        switch (hanCount + doraCount) {
+          case 1:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(1000);
+                break;
+              case 4:
+                setScore(1300);
+                break;
+              case 5:
+                setScore(1600);
+                break;
+              case 6:
+                setScore(2000);
+                break;
+              case 7:
+                setScore(2300);
+                break;
+              case 8:
+                setScore(2600);
+                break;
+              case 9:
+                setScore(2900);
+                break;
+              case 10:
+                setScore(3200);
+                break;
+              case 11:
+                setScore(3600);
+                break;
+              default:
+                alert("点数計算できません");
+                break;
+            }
+            break;
+          case 2:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(2000);
+                break;
+              case 4:
+                setScore(2600);
+                break;
+              case 5:
+                setScore(3200);
+                break;
+              case 6:
+                setScore(3900);
+                break;
+              case 7:
+                setScore(4500);
+                break;
+              case 8:
+                setScore(5200);
+                break;
+              case 9:
+                setScore(5800);
+                break;
+              case 10:
+                setScore(6400);
+                break;
+              case 11:
+                setScore(7100);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
+            break;
           case 3:
-            setScore(3200);
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(3200);
+                break;
+              case 4:
+                setScore(3900);
+                break;
+              case 5:
+                setScore(5200);
+                break;
+              case 6:
+                setScore(6400);
+                break;
+              case 7:
+                setScore(7700);
+                break;
+              case 8:
+                setScore(8000);
+                break;
+              case 9:
+                setScore(8000);
+                break;
+              case 10:
+                setScore(8000);
+                break;
+              case 11:
+                setScore(8000);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
             break;
           case 4:
-            setScore(3900);
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(7700);
+                break;
+              default:
+                setScore(8000);
+                break;
+            }
             break;
           case 5:
-            setScore(5200);
+            setScore(8000);
             break;
           case 6:
-            setScore(6400);
+            setScore(12000);
             break;
           case 7:
-              setScore(7700);
-              break;
+            setScore(12000);
+            break;
           case 8:
-            setScore(8000);
+            setScore(16000);
             break;
           case 9:
-            setScore(8000);
+            setScore(16000);
             break;
           case 10:
-            setScore(8000);
+            setScore(16000);
             break;
           case 11:
-            setScore(8000);
+            setScore(24000);
             break;
-          default:
-            alert("符計算が間違ってます");
+          case 12:
+            setScore(24000);
             break;
         }
-        break;
-      case 4:
-        switch(Math.ceil(fuCount/10)) {
+      } //普通の計算
+    } // 子の計算終了
+    else {
+      if (
+        pinhuCheck === false &&
+        tsumoCheck === true &&
+        chitoitsuCheck === false
+      ) {
+        switch (hanCount + doraCount) {
+          case 1:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setOyaTsumoScore(500);
+                setScore(1500);
+                break;
+              case 4:
+                setOyaTsumoScore(700);
+                setScore(2100);
+                break;
+              case 5:
+                setOyaTsumoScore(800);
+                setScore(2400);
+                break;
+              case 6:
+                setOyaTsumoScore(1000);
+                setScore(3000);
+                break;
+              case 7:
+                setOyaTsumoScore(1200);
+                setScore(3600);
+                break;
+              case 8:
+                setOyaTsumoScore(1300);
+                setScore(3900);
+                break;
+              case 9:
+                setOyaTsumoScore(1500);
+                setScore(4500);
+                break;
+              case 10:
+                setOyaTsumoScore(1600);
+                setScore(4800);
+                break;
+              case 11:
+                setOyaTsumoScore(1800);
+                setScore(5400);
+                break;
+              default:
+                alert("点数計算できません");
+                break;
+            }
+            break;
+          case 2:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setOyaTsumoScore(1000);
+                setScore(3000);
+                break;
+              case 4:
+                setOyaTsumoScore(1300);
+                setScore(3900);
+                break;
+              case 5:
+                setOyaTsumoScore(1600);
+                setScore(4800);
+                break;
+              case 6:
+                setOyaTsumoScore(2000);
+                setScore(6000);
+                break;
+              case 7:
+                setOyaTsumoScore(2300);
+                setScore(6900);
+                break;
+              case 8:
+                setOyaTsumoScore(2600);
+                setScore(7800);
+                break;
+              case 9:
+                setOyaTsumoScore(2900);
+                setScore(8700);
+                break;
+              case 10:
+                setOyaTsumoScore(3200);
+                setScore(9600);
+                break;
+              case 11:
+                setOyaTsumoScore(3600);
+                setScore(11800);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
+            break;
           case 3:
-            setScore(7700);
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setOyaTsumoScore(2000);
+                setScore(6000);
+                break;
+              case 4:
+                setOyaTsumoScore(2600);
+                setScore(7800);
+                break;
+              case 5:
+                setOyaTsumoScore(3200);
+                setScore(9600);
+                break;
+              case 6:
+                setOyaTsumoScore(3900);
+                setScore(11700);
+                break;
+              case 7:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+              case 8:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+              case 9:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+              case 10:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+              case 11:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
+            break;
+          case 4:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setOyaTsumoScore(3900);
+                setScore(11700);
+                break;
+              default:
+                setOyaTsumoScore(4000);
+                setScore(12000);
+                break;
+            }
+            break;
+          case 5:
+            setOyaTsumoScore(4000);
+            setScore(12000);
+            break;
+          case 6:
+            setOyaTsumoScore(6000);
+            setScore(18000);
+            break;
+          case 7:
+            setOyaTsumoScore(6000);
+            setScore(18000);
+            break;
+          case 8:
+            setOyaTsumoScore(8000);
+            setScore(24000);
+            break;
+          case 9:
+            setOyaTsumoScore(8000);
+            setScore(24000);
+            break;
+          case 10:
+            setOyaTsumoScore(8000);
+            setScore(24000);
+            break;
+          case 11:
+            setOyaTsumoScore(12000);
+            setScore(36000);
+            break;
+          case 12:
+            setOyaTsumoScore(12000);
+            setScore(36000);
             break;
           default:
-            setScore(8000);
+            setOyaTsumoScore(16000);
+            setScore(48000);
+            alert("数え役満");
             break;
         }
-        break;
-      case 5:
-        setScore(8000);
-        break;
-      case 6:
-        setScore(12000);
-        break;
-      case 7:
-        setScore(12000);
-        break;
-      case 8:
-        setScore(16000);
-        break;
-      case 9:
-        setScore(16000);
-        break;      
-      case 10:
-        setScore(16000);
-        break;
-      case 11:
-        setScore(24000);
-        break;
-      case 12:
-        setScore(24000);
-        break;
-}
-} //普通の計算
-} // 子の計算終了
-
-else {
-  if (pinhuCheck === false && tsumoCheck === true && chitoitsuCheck === false) {
-    switch(hanCount+doraCount) {
-      case 1:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setOyaTsumoScore(500);
-          setScore(1500);
-          break;
-        case 4:
+      } //ツモの計算
+      else if (
+        pinhuCheck === true &&
+        tsumoCheck === true &&
+        chitoitsuCheck === false
+      ) {
+        if (hanCount + doraCount === 2) {
           setOyaTsumoScore(700);
-          setScore(2100);          
-          break;
-        case 5:
-          setOyaTsumoScore(800);
-          setScore(2400);
-          break;
-        case 6:
-          setOyaTsumoScore(1000);
-          setScore(3000);          
-          break;
-        case 7:
-          setOyaTsumoScore(1200);
-          setScore(3600);            
-          break;
-        case 8:
+          setScore(2100);
+        } else if (hanCount + doraCount === 3) {
           setOyaTsumoScore(1300);
-          setScore(3900);          
-          break;
-        case 9:
-          setOyaTsumoScore(1500);
-          setScore(4500);          
-          break;
-        case 10:
-          setOyaTsumoScore(1600);
-          setScore(4800);          
-          break;
-        case 11:
-          setOyaTsumoScore(1800);
-          setScore(5400);          
-          break;
-        default:
-          alert("点数計算できません");
-          break;
-      };
-      break;
-      case 2:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setOyaTsumoScore(1000);
-          setScore(3000);          
-          break;
-        case 4:
-          setOyaTsumoScore(1300);
-          setScore(3900);          
-          break;
-        case 5:
-          setOyaTsumoScore(1600);
-          setScore(4800);          
-          break;
-        case 6:
-          setOyaTsumoScore(2000);
-          setScore(6000);          
-          break;
-        case 7:
-          setOyaTsumoScore(2300);
-          setScore(6900);            
-          break;
-        case 8:
+          setScore(3900);
+        } else if (hanCount + doraCount === 4) {
           setOyaTsumoScore(2600);
-          setScore(7800);          
-          break;
-        case 9:
-          setOyaTsumoScore(2900);
-          setScore(8700);          
-          break;
-        case 10:
+          setScore(7200);
+        } else if (hanCount + doraCount === 5) {
+          setOyaTsumoScore(12000);
+          setScore(4000);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          setOyaTsumoScore(6000);
+          setScore(18000);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          setOyaTsumoScore(8000);
+          setScore(24000);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          setOyaTsumoScore(12000);
+          setScore(36000);
+        } else {
+          setOyaTsumoScore(16000);
+          setScore(48000);
+        }
+      } //ピンフツモの計算
+      else if (
+        pinhuCheck === false &&
+        tsumoCheck === true &&
+        chitoitsuCheck === true
+      ) {
+        if (hanCount + doraCount === 3) {
+          setOyaTsumoScore(1600);
+          setScore(4800);
+        } else if (hanCount + doraCount === 4) {
           setOyaTsumoScore(3200);
-          setScore(9600);          
-          break;
-        case 11:
-          setOyaTsumoScore(3600);
-          setScore(11800);          
-          break;
-        default:
-          alert("符計算が間違ってます");
-          break;
-      }
-      break;
-      case 3:
-        switch(Math.ceil(fuCount/10)) {
-          case 3:
-            setOyaTsumoScore(2000);
-            setScore(6000);            
-            break;
-          case 4:
-            setOyaTsumoScore(2600);
-            setScore(7800);            
-            break;
-          case 5:
-            setOyaTsumoScore(3200);
-            setScore(9600);            
-            break;
-          case 6:
-            setOyaTsumoScore(3900);
-            setScore(11700);            
-            break;
-          case 7:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-          case 8:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-          case 9:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-          case 10:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-          case 11:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-          default:
-            alert("符計算が間違ってます");
-            break;
-        }
-        break;
-      case 4:
-        switch(Math.ceil(fuCount/10)) {
-          case 3:
-            setOyaTsumoScore(3900);
-            setScore(11700);            break;
-          default:
-            setOyaTsumoScore(4000);
-            setScore(12000);            
-            break;
-        }
-        break;
-      case 5:
-        setOyaTsumoScore(4000);
-        setScore(12000);            
-    break;
-      case 6:
-        setOyaTsumoScore(6000);
-        setScore(18000);            
-    break;
-      case 7:
-        setOyaTsumoScore(6000);
-        setScore(18000);            
-        break;
-      case 8:
-        setOyaTsumoScore(8000);
-        setScore(24000);            
-        break;
-      case 9:
-        setOyaTsumoScore(8000);
-        setScore(24000);            
-        break;      
-      case 10:
-        setOyaTsumoScore(8000);
-        setScore(24000);            
-        break;
-      case 11:
-        setOyaTsumoScore(12000);
-        setScore(36000);            
-        break;
-      case 12:
-        setOyaTsumoScore(12000);
-        setScore(36000);            
-        break;
-      default:
-        setOyaTsumoScore(16000);
-        setScore(48000);
-        alert("数え役満");            
-        break;
-
-}
-} //ツモの計算
-  else if (pinhuCheck === true && tsumoCheck === true && chitoitsuCheck === false) {
-  if (hanCount + doraCount === 2) {
-    setOyaTsumoScore(700);
-    setScore(2100);            
-} else if (hanCount + doraCount === 3) {
-  setOyaTsumoScore(1300);
-  setScore(3900);            
-} else if (hanCount + doraCount === 4) {
-  setOyaTsumoScore(2600);
-  setScore(7200);            
-} else if (hanCount + doraCount === 5) {
-  setOyaTsumoScore(12000);
-  setScore(4000);            
-} else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-  setOyaTsumoScore(6000);
-  setScore(18000);            
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-    setOyaTsumoScore(8000);
-    setScore(24000);            
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-    setOyaTsumoScore(12000);
-    setScore(36000);            
-  } else {
-    setOyaTsumoScore(16000);
-    setScore(48000); 
-  }
-} //ピンフツモの計算
-  else if (pinhuCheck === false && tsumoCheck === true && chitoitsuCheck === true) {
-  if (hanCount + doraCount === 3) {
-    setOyaTsumoScore(1600);
-    setScore(4800); 
-  } else if (hanCount + doraCount === 4) {
-    setOyaTsumoScore(3200);
-    setScore(9600);
-  } else if (hanCount + doraCount === 5) {
-    setOyaTsumoScore(4000);
-    setScore(12000);            
-  } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-    setOyaTsumoScore(6000);
-    setScore(18000);            
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-      setOyaTsumoScore(8000);
-      setScore(24000);            
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-      setOyaTsumoScore(12000);
-      setScore(36000);            
-  } else {
-      setOyaTsumoScore(16000);
-      setScore(48000); 
-  }
-} //七対子ツモの計算
-  else if (pinhuCheck === false && tsumoCheck === false && chitoitsuCheck === true) {
-  if (hanCount + doraCount === 2) {
-    setScore(1600);
-  } else if (hanCount + doraCount === 3) {
-    setScore(2400);
-  } else if (hanCount + doraCount === 4) {
-    setScore(4800);
-  } else if (hanCount + doraCount === 5) {
-    setScore(12000);
-  } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
-    setScore(18000);
-  } else if (hanCount + doraCount === 8 || hanCount + doraCount === 9 || hanCount + doraCount === 10) {
-    setScore(24000);
-  } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
-    setScore(36000);
-  } else {
-    setScore(48000);
-  }
-} //七対子の計算
-  else {
-   switch(hanCount+doraCount) {
-      case 1:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setScore(1500);
-          break;
-        case 4:
-          setScore(2000);
-          break;
-        case 5:
-          setScore(2400);
-          break;
-        case 6:
-          setScore(2900);
-          break;
-        case 7:
-            setScore(3400);
-            break;
-        case 8:
-          setScore(3900);
-          break;
-        case 9:
-          setScore(4400);
-          break;
-        case 10:
-          setScore(4800);
-          break;
-        case 11:
-          setScore(5300);
-          break;
-        default:
-          alert("点数計算できません");
-          break;
-      };
-      break;
-      case 2:
-      switch(Math.ceil(fuCount/10)) {
-        case 3:
-          setScore(2900);
-          break;
-        case 4:
-          setScore(3900);
-          break;
-        case 5:
-          setScore(4800);
-          break;
-        case 6:
-          setScore(5800);
-          break;
-        case 7:
-            setScore(6800);
-            break;
-        case 8:
-          setScore(7700);
-          break;
-        case 9:
-          setScore(8700);
-          break;
-        case 10:
           setScore(9600);
-          break;
-        case 11:
-          setScore(10600);
-          break;
-        default:
-          alert("符計算が間違ってます");
-          break;
-      }
-      break;
-      case 3:
-        switch(Math.ceil(fuCount/10)) {
+        } else if (hanCount + doraCount === 5) {
+          setOyaTsumoScore(4000);
+          setScore(12000);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          setOyaTsumoScore(6000);
+          setScore(18000);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          setOyaTsumoScore(8000);
+          setScore(24000);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          setOyaTsumoScore(12000);
+          setScore(36000);
+        } else {
+          setOyaTsumoScore(16000);
+          setScore(48000);
+        }
+      } //七対子ツモの計算
+      else if (
+        pinhuCheck === false &&
+        tsumoCheck === false &&
+        chitoitsuCheck === true
+      ) {
+        if (hanCount + doraCount === 2) {
+          setScore(1600);
+        } else if (hanCount + doraCount === 3) {
+          setScore(2400);
+        } else if (hanCount + doraCount === 4) {
+          setScore(4800);
+        } else if (hanCount + doraCount === 5) {
+          setScore(12000);
+        } else if (hanCount + doraCount === 6 || hanCount + doraCount === 7) {
+          setScore(18000);
+        } else if (
+          hanCount + doraCount === 8 ||
+          hanCount + doraCount === 9 ||
+          hanCount + doraCount === 10
+        ) {
+          setScore(24000);
+        } else if (hanCount + doraCount === 11 || hanCount + doraCount === 12) {
+          setScore(36000);
+        } else {
+          setScore(48000);
+        }
+      } //七対子の計算
+      else {
+        switch (hanCount + doraCount) {
+          case 1:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(1500);
+                break;
+              case 4:
+                setScore(2000);
+                break;
+              case 5:
+                setScore(2400);
+                break;
+              case 6:
+                setScore(2900);
+                break;
+              case 7:
+                setScore(3400);
+                break;
+              case 8:
+                setScore(3900);
+                break;
+              case 9:
+                setScore(4400);
+                break;
+              case 10:
+                setScore(4800);
+                break;
+              case 11:
+                setScore(5300);
+                break;
+              default:
+                alert("点数計算できません");
+                break;
+            }
+            break;
+          case 2:
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(2900);
+                break;
+              case 4:
+                setScore(3900);
+                break;
+              case 5:
+                setScore(4800);
+                break;
+              case 6:
+                setScore(5800);
+                break;
+              case 7:
+                setScore(6800);
+                break;
+              case 8:
+                setScore(7700);
+                break;
+              case 9:
+                setScore(8700);
+                break;
+              case 10:
+                setScore(9600);
+                break;
+              case 11:
+                setScore(10600);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
+            break;
           case 3:
-            setScore(5800);
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(5800);
+                break;
+              case 4:
+                setScore(7700);
+                break;
+              case 5:
+                setScore(9600);
+                break;
+              case 6:
+                setScore(11600);
+                break;
+              case 7:
+                setScore(12000);
+                break;
+              case 8:
+                setScore(12000);
+                break;
+              case 9:
+                setScore(12000);
+                break;
+              case 10:
+                setScore(12000);
+                break;
+              case 11:
+                setScore(12000);
+                break;
+              default:
+                alert("符計算が間違ってます");
+                break;
+            }
             break;
           case 4:
-            setScore(7700);
+            switch (Math.ceil(fuCount / 10)) {
+              case 3:
+                setScore(11600);
+                break;
+              default:
+                setScore(12000);
+                break;
+            }
             break;
           case 5:
-            setScore(9600);
+            setScore(12000);
             break;
           case 6:
-            setScore(11600);
+            setScore(18000);
             break;
           case 7:
-              setScore(12000);
-              break;
+            setScore(18000);
+            break;
           case 8:
-            setScore(12000);
+            setScore(24000);
             break;
           case 9:
-            setScore(12000);
+            setScore(24000);
             break;
           case 10:
-            setScore(12000);
+            setScore(24000);
             break;
           case 11:
-            setScore(12000);
+            setScore(36000);
+            break;
+          case 12:
+            setScore(36000);
             break;
           default:
-            alert("符計算が間違ってます");
+            setScore(48000);
+            alert("役満");
             break;
         }
-        break;
-      case 4:
-        switch(Math.ceil(fuCount/10)) {
-          case 3:
-            setScore(11600);
-            break;
-          default:
-            setScore(12000);
-            break;
-        }
-        break;
-      case 5:
-        setScore(12000);
-        break;
-      case 6:
-        setScore(18000);
-        break;
-      case 7:
-        setScore(18000);
-        break;
-      case 8:
-        setScore(24000);
-        break;
-      case 9:
-        setScore(24000);
-        break;      
-      case 10:
-        setScore(24000);
-        break;
-      case 11:
-        setScore(36000);
-        break;
-      case 12:
-        setScore(36000);
-        break;
-      default:
-        setScore(48000);
-        alert("役満");
-        break;
-}
-} //普通の計算
-} //親の計算終了
-} // calculation関数  終了
+      } //普通の計算
+    } //親の計算終了
+  }; // calculation関数  終了
 
-//TODO これを点数表示に表示させたいL.962、コンポーネント化して別ファイルへ
-const ScorePreview = () => {
-  if (oyaCheck === true && tsumoCheck === true) {
-    return (
-      <Box>{score}点（{oyaTsumoScore}オール）</Box>
-    )
-  } else if (oyaCheck === true && tsumoCheck === false) {
-    return (
-      <Box>{score}点</Box>
-    )
-  } else if (oyaCheck === false && tsumoCheck === true) {
-    return (
-      <Box>{tsumoScore.map((tumo) => (
-        <Box key={tumo.name}>{tumo.name}:{tumo.score}点</Box>
-      ))}
-      </Box>
-    )
-  } else if (oyaCheck === false && tsumoCheck === false) {
-    return (
-      <Box>{score}点</Box>
-    )
-  }
-  return (
-    <Box>エラー</Box>
-  )
-}
-
-const changeYakuState = (name: string) => {
-  setYakuStateList([...yakuStateList, name])
-}
+  const changeYakuState = (name: string) => {
+    setYakuStateList([...yakuStateList, name]);
+  };
 
   return (
     <>
       <CalculationHome />
-      <Box border="solid" margin="15px 15px">
-        <Text fontSize="20px" fontWeight="bold">
+      <Box border="solid" margin="2% 2%">
+        <Text fontSize="25px" fontWeight="bold">
           卓の状況
         </Text>
         <ButtonGroup>
-          <Button onClick={()=>setOyaCheck(true)}>親</Button>
+          <Button onClick={() => setOyaCheck(true)}>親</Button>
           <Button>x本場</Button>
         </ButtonGroup>
       </Box>
-      <Box border="solid" margin="15px 15px">
-        <Text fontSize="20px" fontWeight="bold">
+      <Box border="solid" margin="2%">
+        <Text fontSize="25px" fontWeight="bold">
           役を選択
         </Text>
-        <Box>
-          <Text>1翻役</Text>
+        <Box >
+          <Text fontSize="20px" textAlign="center" margin="1%">1翻役</Text>
+          <ButtonGroup onClick={han1Add} width="1000px" maxWidth="100%" marginBottom="1.5%">
+            <YakuStateButton
+              name="立直"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="一発"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButtonForTsumo
+              name="ツモ"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+              setTsumoCheck={setTsumoCheck}
+            />
+            <YakuStateButtonForPinhu
+              name="平和"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+              setPinhuCheck={setPinhuCheck}
+            />
+            <YakuStateButton
+              name="断么"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="一盃口"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="白"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="發"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="中"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+          </ButtonGroup>
           <ButtonGroup onClick={han1Add}>
-          <YakuStateButton name='立直' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-          <YakuStateButton name='一発' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-          <YakuStateButtonForTsumo name='ツモ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setTsumoCheck={setTsumoCheck} />
-          <YakuStateButtonForPinhu name='平和' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setPinhuCheck={setPinhuCheck} />
-            <YakuStateButton name='断么' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='一盃口' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='白' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='發' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='中' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='自風牌' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='場風牌' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='ハイテイ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='嶺上開花' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='三色同順(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='チャンタ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='一気通貫(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton
+              name="自風牌"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="場風牌"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="ハイテイ"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="嶺上開花"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="三色同順(鳴き)"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="チャンタ(鳴き)"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="一気通貫(鳴き)"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
           </ButtonGroup>
         </Box>
         <Box>
-          <Text>2翻役</Text>
+          <Text fontSize="20px" textAlign="center" margin="2% auto">2翻役</Text>
+          <ButtonGroup onClick={han2Add} marginBottom="1.5%">            
+          <YakuStateButton
+              name="ダブル立直"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="三色同順"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="三色同刻"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="三暗刻"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="一気通貫"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButtonForChitoitsu
+              name="七対子"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+              setChitoitsuCheck={setChitoitsuCheck}
+            /></ButtonGroup>
           <ButtonGroup onClick={han2Add}>
-            <YakuStateButton name='ダブル立直' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='三色同順' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='三色同刻' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='三暗刻' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='一気通貫' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButtonForChitoitsu name='七対子' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setChitoitsuCheck={setChitoitsuCheck} />
-            <YakuStateButton name='トイトイ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='チャンタ' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='三槓子' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='小三元' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='混老頭' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='混一色(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-            <YakuStateButton name='ジュンチャン(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton
+              name="トイトイ"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="チャンタ"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="三槓子"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="小三元"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="混老頭"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="混一色(鳴き)"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="ジュンチャン(鳴き)"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
           </ButtonGroup>
         </Box>
         <Box onClick={han3Add}>
-          <Text>3翻役</Text>
+          <Text fontSize="20px" textAlign="center" margin="2% auto">3翻役</Text>
           <ButtonGroup>
-          <YakuStateButton name='混一色' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-          <YakuStateButton name='ジュンチャン' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
-          <YakuStateButton name='二盃口' yakuStateList={yakuStateList} changeYakuState={changeYakuState} />
+            <YakuStateButton
+              name="混一色"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="ジュンチャン"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
+            <YakuStateButton
+              name="二盃口"
+              yakuStateList={yakuStateList}
+              changeYakuState={changeYakuState}
+            />
           </ButtonGroup>
         </Box>
-        <Box>
-          <Text>その他</Text>
-          <YakuStateButtonForChinitsu5  name='チンイツ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setHanCount={setHanCount} hanCount={hanCount} />
-          <YakuStateButtonForChinitsu6  name='チンイツ(鳴き)' yakuStateList={yakuStateList} changeYakuState={changeYakuState} setHanCount={setHanCount} hanCount={hanCount} />
-
+        <Box marginBottom="2%">
+          <Text fontSize="20px" textAlign="center" margin="2% auto">その他</Text>
+          <ButtonGroup>
+          <YakuStateButtonForChinitsu5
+            name="チンイツ(鳴き)"
+            yakuStateList={yakuStateList}
+            changeYakuState={changeYakuState}
+            setHanCount={setHanCount}
+            hanCount={hanCount}
+          />
+          <YakuStateButtonForChinitsu6
+            name="チンイツ"
+            yakuStateList={yakuStateList}
+            changeYakuState={changeYakuState}
+            setHanCount={setHanCount}
+            hanCount={hanCount}
+          />
+          </ButtonGroup>
         </Box>
-        <Box display="flex">
-          <Button onClick={()=>setDoraCount(doraCount + 1)}>ドラ+1</Button>
-          <Text>ドラ:{doraCount}</Text>
+        <Box display="flex" margin="2%">
+          <Button onClick={() => setDoraCount(doraCount + 1)}>ドラ+1</Button>
+          <Text fontSize="20px" paddingTop="5px" color="red" fontWeight="bold">ドラ:{doraCount}</Text>
         </Box>
       </Box>
-      <Box border="solid" margin="15px 15px">
-        <Text fontSize="20px" fontWeight="bold">
+      <Box border="solid" margin="1%">
+        <Text fontSize="20px" fontWeight="bold" >
           符計算
         </Text>
         <Box>
           <Text>アガリ方</Text>
           <ButtonGroup>
-          <Button onClick={()=>setFuCount(fuCount + 10)}>門前ロン</Button>
-          <Button onClick={()=>setFuCount(fuCount + 2)}>ツモ</Button>
-          <Button>鳴いてロン</Button>
+            <Button onClick={() => setFuCount(fuCount + 10)}>門前ロン</Button>
+            <Button onClick={() => setFuCount(fuCount + 2)}>ツモ</Button>
+            <Button>鳴いてロン</Button>
           </ButtonGroup>
         </Box>
         <Box>
           <Text>面子</Text>
           <ButtonGroup>
-            <Button onClick={()=>setFuCount(fuCount + 2)}>明刻(2~8の数字牌)</Button>
-            <Button onClick={()=>setFuCount(fuCount + 4)}>明刻</Button>
-            <Button onClick={()=>setFuCount(fuCount + 4)}>暗刻(2~8の数字牌)</Button>
-            <Button onClick={()=>setFuCount(fuCount + 8)}>暗刻</Button>
-            <Button onClick={()=>setFuCount(fuCount + 8)}>明カン(2~8の数字牌)</Button>
-            <Button onClick={()=>setFuCount(fuCount + 16)}>明カン</Button>
-            <Button onClick={()=>setFuCount(fuCount + 16)}>暗カン(2~8の数字牌)</Button>
-            <Button onClick={()=>setFuCount(fuCount + 32)}>暗カン</Button>
+            <Button onClick={() => setFuCount(fuCount + 2)}>
+              明刻(2~8の数字牌)
+            </Button>
+            <Button onClick={() => setFuCount(fuCount + 4)}>明刻</Button>
+            <Button onClick={() => setFuCount(fuCount + 4)}>
+              暗刻(2~8の数字牌)
+            </Button>
+            <Button onClick={() => setFuCount(fuCount + 8)}>暗刻</Button>
+            <Button onClick={() => setFuCount(fuCount + 8)}>
+              明カン(2~8の数字牌)
+            </Button>
+            <Button onClick={() => setFuCount(fuCount + 16)}>明カン</Button>
+            <Button onClick={() => setFuCount(fuCount + 16)}>
+              暗カン(2~8の数字牌)
+            </Button>
+            <Button onClick={() => setFuCount(fuCount + 32)}>暗カン</Button>
           </ButtonGroup>
         </Box>
         <Box>
           <Text>アタマが役牌であれば押す</Text>
-          <Button onClick={()=>setFuCount(fuCount + 2)}>アタマ</Button>
+          <Button onClick={() => setFuCount(fuCount + 2)}>アタマ</Button>
         </Box>
         <Box>
           <Text>待ち(ペンチャン・カンチャン・タンキ・ノベタン)のみ</Text>
-          <Button onClick={()=>setFuCount(fuCount + 2)}>待ち</Button>
+          <Button onClick={() => setFuCount(fuCount + 2)}>待ち</Button>
         </Box>
         <Text>{fuCount}符</Text>
       </Box>
       <Box>
-        <Button float="right" onClick={calculation}>計算する</Button>
+        <Button float="right" onClick={calculation}>
+          計算する
+        </Button>
       </Box>
       <Center>
-        <ScorePreview />
-        {yakuStateList.map((yaku,index)=>(
-          <Box key={index}>{yaku}</Box>
-        )
-      )}
+        <ScorePreview
+          score={score}
+          oyaTsumoScore={oyaTsumoScore}
+          tsumoScore={tsumoScore}
+          oyaCheck={oyaCheck}
+          tsumoCheck={tsumoCheck}
+        />
+        {yakuStateList.map((yaku, index) => (
+          <Box key={index} fontSize="25px">{yaku}</Box>
+        ))}
         <Button>記録する</Button>
         <Button onClick={resetScore}>リセットする</Button>
       </Center>
     </>
   );
 };
-
+//TODO L1295周辺見栄え良くする。
+//TODO 親、本場機能確認、実装
 export default ScoreCal;
