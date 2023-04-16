@@ -10,6 +10,10 @@ import YakuStateButtonForChinitsu6 from "@/components/CalculationComponents/Yaku
 import ScorePreview from "@/components/CalculationComponents/ScorePreview";
 import { OyaButton } from "@/components/CalculationComponents/YakustateButtons/OyaButton";
 import { HonbaButton } from "@/components/CalculationComponents/YakustateButtons/HonbaButton";
+import { Minko2Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minko2Button";
+import { Minko4Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minko4Button";
+import { Anko4Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Anko4Button";
+import { Anko8Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Anko8Button";
 
 //複合しないパターンにエラー実装が必要。
 //Switchで〜以上という条件分岐させたい
@@ -27,6 +31,10 @@ const ScoreCal = () => {
   const [tsumoScore, setTsumoScore] = useState<tsumoScoreType[]>([]);
   const [oyaTsumoScore, setOyaTsumoScore] = useState<number>(0);
   const [honbaCount, setHonbaCount] =useState<number>(0);
+  const [minkoCount, setMinkoCount] = useState<number>(0);
+  const [ankoCount, setAnkoCount] = useState<number>(0);
+  const [minkanCount, setMinkanCount] = useState<number>(0);
+  const [ankanCount,setAnkanCount] = useState<number>(0);
   //特殊計算になる役を管理
   const [tsumoCheck, setTsumoCheck] = useState<boolean>(false);
   const [pinhuCheck, setPinhuCheck] = useState<boolean>(false);
@@ -1271,23 +1279,20 @@ const ScoreCal = () => {
         <Box>
           <Text>面子</Text>
           <ButtonGroup>
-            <Button onClick={() => setFuCount(fuCount + 2)}>
-              明刻(2~8の数字牌)
-            </Button>
-            <Button onClick={() => setFuCount(fuCount + 4)}>明刻</Button>
-            <Button onClick={() => setFuCount(fuCount + 4)}>
-              暗刻(2~8の数字牌)
-            </Button>
-            <Button onClick={() => setFuCount(fuCount + 8)}>暗刻</Button>
+            <Minko2Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
+            <Minko4Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
+            <Anko4Button fuCount={fuCount} ankoCount={minkoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
+            <Anko8Button fuCount={fuCount} ankoCount={minkoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
             <Button onClick={() => setFuCount(fuCount + 8)}>
-              明カン(2~8の数字牌)
+              明カン(2~8の数牌)
             </Button>
-            <Button onClick={() => setFuCount(fuCount + 16)}>明カン</Button>
+            <Button onClick={() => setFuCount(fuCount + 16)}>明カン(1,9,字牌)</Button>
             <Button onClick={() => setFuCount(fuCount + 16)}>
-              暗カン(2~8の数字牌)
+              暗カン(2~8の数牌)
             </Button>
-            <Button onClick={() => setFuCount(fuCount + 32)}>暗カン</Button>
+            <Button onClick={() => setFuCount(fuCount + 32)}>暗カン(1,9,字牌)</Button>
           </ButtonGroup>
+          <Text>順子:{4-(minkoCount+ankoCount+minkanCount+ankanCount)}、明刻:{minkoCount}、暗刻:{ankoCount}、明カン:{minkanCount}、暗カン:{ankanCount}</Text>
         </Box>
         <Box>
           <Text>アタマが役牌であれば押す</Text>
