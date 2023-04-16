@@ -8,6 +8,8 @@ import YakuStateButtonForChitoitsu from "@/components/CalculationComponents/Yaku
 import YakuStateButtonForChinitsu5 from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForChinitsu5";
 import YakuStateButtonForChinitsu6 from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForChinitsu6";
 import ScorePreview from "@/components/CalculationComponents/ScorePreview";
+import { OyaButton } from "@/components/CalculationComponents/YakustateButtons/OyaButton";
+import { HonbaButton } from "@/components/CalculationComponents/YakustateButtons/HonbaButton";
 
 //複合しないパターンにエラー実装が必要。
 //Switchで〜以上という条件分岐させたい
@@ -24,11 +26,15 @@ const ScoreCal = () => {
   const [score, setScore] = useState<number>(0);
   const [tsumoScore, setTsumoScore] = useState<tsumoScoreType[]>([]);
   const [oyaTsumoScore, setOyaTsumoScore] = useState<number>(0);
+  const [honbaCount, setHonbaCount] =useState<number>(0);
   //特殊計算になる役を管理
   const [tsumoCheck, setTsumoCheck] = useState<boolean>(false);
   const [pinhuCheck, setPinhuCheck] = useState<boolean>(false);
   const [chitoitsuCheck, setChitoitsuCheck] = useState<boolean>(false);
   const [oyaCheck, setOyaCheck] = useState<boolean>(false);
+  //ボタンクリック管理
+  const [oyaClick, setOyaClick] = useState<boolean>(false);
+  const [honbaClick, setHonbaClick] = useState<boolean>(false);
   //役数カウント
   const han1Add = () => {
     setHanCount(hanCount + 1);
@@ -50,6 +56,8 @@ const ScoreCal = () => {
     setTsumoCheck(false);
     setPinhuCheck(false);
     setChitoitsuCheck(false);
+    setHonbaCount(0);
+    setOyaCheck(false);
   };
 
   //計算機
@@ -1030,9 +1038,13 @@ const ScoreCal = () => {
           卓の状況
         </Text>
         <ButtonGroup>
-          <Button onClick={() => setOyaCheck(true)}>親</Button>
-          <Button>x本場</Button>
+          <OyaButton oyaCheck={oyaCheck} oyaClick={oyaClick} setOyaCheck={setOyaCheck} setOyaClick={setOyaClick}/>
+          <HonbaButton  honbaCount={honbaCount} honbaClick={honbaClick} setHonbaCount={setHonbaCount} setHonbaClick={setHonbaClick}/>
         </ButtonGroup>
+        <Box textAlign="center">
+          <Text fontSize="25px" fontWeight="bold">{oyaCheck ? "親です": "子です"}</Text>
+          <Text fontSize="25px" fontWeight="bold">{honbaCount}本場です</Text>
+        </Box>
       </Box>
       <Box border="solid" margin="2%">
         <Text fontSize="25px" fontWeight="bold">
@@ -1299,6 +1311,7 @@ const ScoreCal = () => {
           tsumoScore={tsumoScore}
           oyaCheck={oyaCheck}
           tsumoCheck={tsumoCheck}
+          honbaCount={honbaCount}
         />
         {yakuStateList.map((yaku, index) => (
           <Box key={index} fontSize="25px" flexDirection="column" borderBottom="solid" width="200px" maxWidth="100%" margin="0 auto" textAlign="center">★{yaku}</Box>
