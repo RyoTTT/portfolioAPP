@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalculationHome from "./calhome";
 import { Box, Text, Button, ButtonGroup, Center } from "@chakra-ui/react";
 import YakuStateButton from "@/components/CalculationComponents/YakustateButtons/YakuStateButton";
@@ -14,8 +14,11 @@ import { Minko2Button } from "@/components/CalculationComponents/YakustateButton
 import { Minko4Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minko4Button";
 import { Anko4Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Anko4Button";
 import { Anko8Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Anko8Button";
+import { Minkan8Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minkan8Button";
+import { Minkan16Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minkan16Button";
+import { Ankan16Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Ankan16Button";
+import { Ankan32Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Ankan32Button";
 
-//複合しないパターンにエラー実装が必要。
 //Switchで〜以上という条件分岐させたい
 const ScoreCal = () => {
   type tsumoScoreType = {
@@ -57,7 +60,7 @@ const ScoreCal = () => {
   //計算リセット
   const resetScore = () => {
     setYakuStateList([]);
-    setHanCount(20);
+    setFuCount(20);
     setHanCount(0);
     setScore(0);
     setDoraCount(0);
@@ -66,6 +69,10 @@ const ScoreCal = () => {
     setChitoitsuCheck(false);
     setHonbaCount(0);
     setOyaCheck(false);
+    setMinkoCount(0);
+    setAnkoCount(0);
+    setMinkanCount(0);
+    setAnkanCount(0);
   };
 
   //計算機
@@ -1038,6 +1045,30 @@ const ScoreCal = () => {
     setYakuStateList([...yakuStateList, name]);
   };
 
+  useEffect(() => {
+    const shuntsuNumber = 4-(minkoCount+ankoCount+minkanCount+ankanCount);
+    if (shuntsuNumber < 0) {
+      alert("面子の数が間違っています、符計算をリセットしてください");
+    }
+  },[minkoCount,minkanCount,ankoCount,ankanCount]);
+
+  const fuReset = () => {
+    setFuCount(20);
+    setMinkoCount(0);
+    setAnkoCount(0);
+    setMinkanCount(0);
+    setAnkanCount(0);
+  }
+
+  const hanReset = () => {
+    setDoraCount(0);
+    setTsumoCheck(false);
+    setPinhuCheck(false);
+    setChitoitsuCheck(false);
+    setHanCount(0);
+    setYakuStateList([]);
+  }
+  
   return (
     <>
       <CalculationHome />
@@ -1263,12 +1294,15 @@ const ScoreCal = () => {
           <Text fontSize="20px" paddingTop="5px" color="red" fontWeight="bold">ドラ:{doraCount}</Text>
         </Box>
         <Box textAlign="center" fontSize="35px" fontWeight="bold">合計:{hanCount}翻</Box>
+        <Box>
+          <Button onClick={hanReset}>役をリセット</Button>
+        </Box>
       </Box>
-      <Box border="solid" margin="1%">
+      <Box border="solid" margin="2%">
         <Text fontSize="20px" fontWeight="bold" >
           符計算
         </Text>
-        <Box>
+        <Box margin="1% auto">
           <Text>アガリ方</Text>
           <ButtonGroup>
             <Button onClick={() => setFuCount(fuCount + 10)}>門前ロン</Button>
@@ -1276,33 +1310,32 @@ const ScoreCal = () => {
             <Button>鳴いてロン</Button>
           </ButtonGroup>
         </Box>
-        <Box>
+        <Box margin="1% auto">
           <Text>面子</Text>
           <ButtonGroup>
             <Minko2Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
             <Minko4Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
-            <Anko4Button fuCount={fuCount} ankoCount={minkoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
-            <Anko8Button fuCount={fuCount} ankoCount={minkoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
-            <Button onClick={() => setFuCount(fuCount + 8)}>
-              明カン(2~8の数牌)
-            </Button>
-            <Button onClick={() => setFuCount(fuCount + 16)}>明カン(1,9,字牌)</Button>
-            <Button onClick={() => setFuCount(fuCount + 16)}>
-              暗カン(2~8の数牌)
-            </Button>
-            <Button onClick={() => setFuCount(fuCount + 32)}>暗カン(1,9,字牌)</Button>
-          </ButtonGroup>
-          <Text>順子:{4-(minkoCount+ankoCount+minkanCount+ankanCount)}、明刻:{minkoCount}、暗刻:{ankoCount}、明カン:{minkanCount}、暗カン:{ankanCount}</Text>
+            <Anko4Button fuCount={fuCount} ankoCount={ankoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
+            <Anko8Button fuCount={fuCount} ankoCount={ankoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
+            <Minkan8Button fuCount={fuCount} minkanCount={minkanCount} setfuCount={setFuCount} setMinkanCount={setMinkanCount}/>
+            <Minkan16Button fuCount={fuCount} minkanCount={minkanCount} setfuCount={setFuCount} setMinkanCount={setMinkanCount}/>
+            <Ankan16Button fuCount={fuCount} ankanCount={ankanCount} setfuCount={setFuCount} setAnkanCount={setAnkanCount}/>
+            <Ankan32Button fuCount={fuCount} ankanCount={ankanCount} setfuCount={setFuCount} setAnkanCount={setAnkanCount}/>          
+            </ButtonGroup>
+          <Text fontSize="25px" fontWeight="bold">順子:{4-(minkoCount+ankoCount+minkanCount+ankanCount)}、明刻:{minkoCount}、暗刻:{ankoCount}、明カン:{minkanCount}、暗カン:{ankanCount}</Text>
         </Box>
-        <Box>
+        <Box margin="1% auto">
           <Text>アタマが役牌であれば押す</Text>
           <Button onClick={() => setFuCount(fuCount + 2)}>アタマ</Button>
         </Box>
-        <Box>
+        <Box margin="1% auto">
           <Text>待ち(ペンチャン・カンチャン・タンキ・ノベタン)のみ</Text>
           <Button onClick={() => setFuCount(fuCount + 2)}>待ち</Button>
         </Box>
         <Text textAlign="center" fontSize="35px" fontWeight="bold">合計:{fuCount}符</Text>
+        <Box>
+          <Button onClick={fuReset}>符をリセット</Button>
+        </Box>
       </Box>
       <Box>
         <Button float="right" onClick={calculation}>

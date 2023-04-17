@@ -9,7 +9,6 @@ type Props = {
     setfuCount:(arg0:number) => void;
     setAnkoCount:(arg0:number) => void;
 };
-// 得点計算に使用する役のボタン
 export const Anko8Button = (props: Props) => {
   const { fuCount, ankoCount,setfuCount,setAnkoCount} = props;
 
