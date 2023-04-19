@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const LinkTabs = () => {
   return (
-    <Center margin="30px">
+    <Center>
     <Breadcrumb>
       <BreadcrumbItem>
         <BreadcrumbLink as={Link} href="./handsresult">
