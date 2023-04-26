@@ -1,28 +1,67 @@
 import React, { useState } from 'react'
 
 const testpage = () => {
-//    const [pai, setPai] = useState([]);
-//
-//    const paiCheck = () => {
-//        get_mianzi(pai);
-//    }
 
- const MachiList = tingpai_mianzi("1112345678999");
- const getMachistr1 = MachiList.map((list) => (
- list.substring(list.indexOf("[") + 1)
- ));
-const getMachistr2 = getMachistr1.map((list) => (
-    list.replace(/]/g,"")
-));
-console.log(getMachistr2);
+   const [tehai, setTehai] = useState();
+   const [machiHaiPreview, setMachiHaiPreview] = useState(); 
 
 
 
+const tenpaiCheck = () => {
+    if (tehai.length === 13 ) {
+    const stringTehai = tehai.toString();
+    const MachiList = tingpai_mianzi(stringTehai);
+    const getMachistr1 = MachiList.map((list) => (
+    list.substring(list.indexOf("[") + 1)
+    ));
+   const getMachistr2 = getMachistr1.map((list) => (
+       list.replace(/]/g,"")
+   ));
+   const machHai = getMachistr2.map((list) => {
+    if (list == 11) return 1;
+    else if (list == 22) return 2;
+    else if (list == 33) return 3;
+    else if (list == 44) return 4;
+    else if (list == 55) return 5;
+    else if (list == 66) return 6;
+    else if (list == 77) return 7;
+    else if (list == 88) return 8;
+    else if (list == 99) return 9;
+    else if (list == 12) return 3;
+    else if (list == 23) return 1,4;
+    else if (list == 34) return 2,5;
+    else if (list == 45) return 3,6;
+    else if (list == 56) return 4,7;
+    else if (list == 67) return 5,8;
+    else if (list == 78) return 6,9;
+    else if (list == 89) return 7;
+    else if (list == 1) return 1;
+    else if (list == 2) return 2;
+    else if (list == 3) return 3;
+    else if (list == 4) return 4;
+    else if (list == 5) return 5;
+    else if (list == 6) return 6;
+    else if (list == 7) return 7;
+    else if (list == 8) return 8;
+    else if (list == 9) return 9;
+    else if (list == 13) return 2;
+    else if (list == 24) return 3;
+    else if (list == 35) return 4;
+    else if (list == 46) return 5;
+    else if (list == 57) return 6;
+    else if (list == 68) return 7;
+    else if (list == 79) return 8;
+})
+console.log(machHai);
+setMachiHaiPreview(machHai);
+} else  {
+    alert("少牌または多牌です")
+    setTehai("");
+}
 
-/*
-*  すべての面子の組合せを調べる
-*    pai: 牌姿、n: 開始位置
-*/
+}
+
+
 function get_mianzi(pai, n = 1) {
 
 if (n > 9) return [[]];
@@ -160,7 +199,15 @@ function tingpai_mianzi(paistr) {
 }
 
 return (
-  <div>{tingpai_mianzi("1112345678999")}</div>
+    <>
+  <div>
+  <input type="text" value={tehai} onChange={(e)=>setTehai(e.target.value)} placeholder="数字のみ入力してください"></input>
+  <button onClick={tenpaiCheck}>試行</button>
+  </div>
+  <div>
+{machiHaiPreview}
+  </div>
+  </>
 )
 };
 
