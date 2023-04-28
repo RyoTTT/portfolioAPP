@@ -1,18 +1,17 @@
 import Labels from "@/components/Labels";
 import React, { useState } from "react";
 import { Input, Button, Text, Box } from "@chakra-ui/react";
-import { machine } from "os";
-import { set } from "react-hook-form";
 
 const HandCheck = () => {
 
-   const [tehai, setTehai] = useState<number | undefined>(undefined);
+   const [tehai, setTehai] = useState<string>("");
    const [machiHaiPreview, setMachiHaiPreview] = useState<any[]>([]); 
 
 
 
 const tenpaiCheck = () => {
     if (!tehai) return;
+    if (tehai.match(/\d/g)) {
     if (tehai.toString().length === 13 ) {
     const stringTehai = tehai.toString();
     const MachiList = tingpai_mianzi(stringTehai);
@@ -72,15 +71,19 @@ const testArray = [...machiHaiFlatSet];
 setMachiHaiPreview(testArray.sort());
 } else  {
     alert("少牌または多牌です");
-    setTehai(undefined);
+    setTehai("");
 }
+    } else {
+      alert("数字のみ入力してください");
+      setTehai("");
+    }
 //TODO 文字を入力しているとエラーが出るようにしたいまたは数字のみ入力にしたいtype="number" tehai /0~9/g
 
 }
 
 const deleteCheck = () => {
   setMachiHaiPreview([]);
-  setTehai(undefined);
+  setTehai("");
 }
 
 
@@ -225,7 +228,7 @@ function tingpai_mianzi(paistr:any) {
       <Box margin="5% 5%" >
         <Box width="500px" margin="0 auto">
           <Text fontWeight="bold" fontSize="20px" marginBottom="1%">手配の数字を入力</Text>
-          <Input type="number" value={tehai ? tehai : ""} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTehai(Number(e.target.value))} placeholder="数字のみ入力してください" border="1px"></Input>
+          <Input type="text" value={tehai ? tehai : ""} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTehai(e.target.value)} placeholder="数字のみ入力してください" border="1px"></Input>
           <Button onClick={tenpaiCheck} margin="2% 1%">確認</Button>
           <Button onClick={deleteCheck}>取り消し</Button>
         </Box>
