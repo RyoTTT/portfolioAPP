@@ -1,71 +1,86 @@
 import Labels from "@/components/Labels";
 import React, { useState } from "react";
 import { Input, Button, Text, Box } from "@chakra-ui/react";
+import { machine } from "os";
+import { set } from "react-hook-form";
 
 const HandCheck = () => {
 
-   const [tehai, setTehai] = useState<string>("");
+   const [tehai, setTehai] = useState<number | undefined>(undefined);
    const [machiHaiPreview, setMachiHaiPreview] = useState<any[]>([]); 
 
 
 
 const tenpaiCheck = () => {
+    if (!tehai) return;
     if (tehai.toString().length === 13 ) {
     const stringTehai = tehai.toString();
     const MachiList = tingpai_mianzi(stringTehai);
-    const getMachistr1 = MachiList.map((list) => (
+    console.log(MachiList);
+    const getMachistr1:any[] = MachiList.map((list) => (
     list.substring(list.indexOf("[") + 1)
     ));
    const getMachistr2 = getMachistr1.map((list) => (
        list.replace(/]/g,"")
    ));
-   const machHai = getMachistr2.map((list) => {
-    if (Number(list) == 11) return 1;
-    else if (Number(list) == 22) return 2;
-    else if (Number(list) == 33) return 3;
-    else if (Number(list) == 44) return 4;
-    else if (Number(list) == 55) return 5;
-    else if (Number(list) == 66) return 6;
-    else if (Number(list) == 77) return 7;
-    else if (Number(list) == 88) return 8;
-    else if (Number(list) == 99) return 9;
-    else if (Number(list) == 12) return 3;
-    else if (Number(list) == 23) return 14;
-    else if (Number(list) == 34) return 25;
-    else if (Number(list) == 45) return 36;
-    else if (Number(list) == 56) return 47;
-    else if (Number(list) == 67) return 58;
-    else if (Number(list) == 78) return 69;
-    else if (Number(list) == 89) return 7;
-    else if (Number(list) == 1) return 1;
-    else if (Number(list) == 2) return 2;
-    else if (Number(list) == 3) return 3;
-    else if (Number(list) == 4) return 4;
-    else if (Number(list) == 5) return 5;
-    else if (Number(list) == 6) return 6;
-    else if (Number(list) == 7) return 7;
-    else if (Number(list) == 8) return 8;
-    else if (Number(list) == 9) return 9;
-    else if (Number(list) == 13) return 2;
-    else if (Number(list) == 24) return 3;
-    else if (Number(list) == 35) return 4;
-    else if (Number(list) == 46) return 5;
-    else if (Number(list) == 57) return 6;
-    else if (Number(list) == 68) return 7;
-    else if (Number(list) == 79) return 8;
+   const machiHai = getMachistr2.map((list) => {
+    if (Number(list) == 11) return "1";
+    else if (Number(list) == 22) return "2";
+    else if (Number(list) == 33) return "3";
+    else if (Number(list) == 44) return "4";
+    else if (Number(list) == 55) return "5";
+    else if (Number(list) == 66) return "6";
+    else if (Number(list) == 77) return "7";
+    else if (Number(list) == 88) return "8";
+    else if (Number(list) == 99) return "9";
+    else if (Number(list) == 12) return "3";
+    else if (Number(list) == 23) return "1,4";
+    else if (Number(list) == 34) return "2,5";
+    else if (Number(list) == 45) return "3,6";
+    else if (Number(list) == 56) return "4,7";
+    else if (Number(list) == 67) return "5,8";
+    else if (Number(list) == 78) return "6,9";
+    else if (Number(list) == 89) return "7";
+    else if (Number(list) == 1) return "1";
+    else if (Number(list) == 2) return "2";
+    else if (Number(list) == 3) return "3";
+    else if (Number(list) == 4) return "4";
+    else if (Number(list) == 5) return "5";
+    else if (Number(list) == 6) return "6";
+    else if (Number(list) == 7) return "7";
+    else if (Number(list) == 8) return "8";
+    else if (Number(list) == 9) return "9";
+    else if (Number(list) == 13) return "2";
+    else if (Number(list) == 24) return "3";
+    else if (Number(list) == 35) return "4";
+    else if (Number(list) == 46) return "5";
+    else if (Number(list) == 57) return "6";
+    else if (Number(list) == 68) return "7";
+    else if (Number(list) == 79) return "8";
 })
-console.log(machHai);
-setMachiHaiPreview(machHai);
+const machiHaiSplit = machiHai.map((machi) =>{
+  if (!machi) return;
+  if (machi.length > 2) {
+    return machi.split(",");
+  } else {
+    return machi;
+  }
+})
+const machiHaiFlat = machiHaiSplit.flat();
+const machiHaiFlatSet = new Set(machiHaiFlat);
+const testArray = [...machiHaiFlatSet];
+setMachiHaiPreview(testArray.sort());
 } else  {
-    alert("少牌または多牌です")
-    setTehai("");
+    alert("少牌または多牌です");
+    setTehai(undefined);
 }
-//TODO 文字を入力しているとエラーが出るようにしたい
+//TODO 文字を入力しているとエラーが出るようにしたいまたは数字のみ入力にしたいtype="number" tehai /0~9/g
+
 }
 
 const deleteCheck = () => {
   setMachiHaiPreview([]);
-  setTehai("");
+  setTehai(undefined);
 }
 
 
@@ -209,8 +224,8 @@ function tingpai_mianzi(paistr:any) {
       <Labels />
       <Box margin="5% 5%" >
         <Box width="500px" margin="0 auto">
-          <Text>手配の数字を入力</Text>
-          <Input type="text" value={tehai} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTehai(e.target.value)} placeholder="数字のみ入力してください"/>
+          <Text fontWeight="bold" fontSize="20px" marginBottom="1%">手配の数字を入力</Text>
+          <Input type="number" value={tehai ? tehai : ""} onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setTehai(Number(e.target.value))} placeholder="数字のみ入力してください" border="1px"></Input>
           <Button onClick={tenpaiCheck} margin="2% 1%">確認</Button>
           <Button onClick={deleteCheck}>取り消し</Button>
         </Box>
@@ -218,7 +233,7 @@ function tingpai_mianzi(paistr:any) {
           <Text fontSize="30px" fontWeight="bold">
             結果
           </Text>
-          <Text textAlign="center" fontSize="50px" border="solid 2px" >
+          <Text textAlign="center" fontSize="50px" border="solid 2px red" >
             {machiHaiPreview.length > 0 ? "聴牌しています" : "聴牌していません" }
           </Text>
 
