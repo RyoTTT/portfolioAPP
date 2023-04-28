@@ -6,6 +6,7 @@ const HandCheck = () => {
 
    const [tehai, setTehai] = useState<string>("");
    const [machiHaiPreview, setMachiHaiPreview] = useState<any[]>([]); 
+   const [tehaiPreview, setTehaiPreview] = useState<any[]>([]);
 
 
 
@@ -15,7 +16,7 @@ const tenpaiCheck = () => {
     if (tehai.toString().length === 13 ) {
     const stringTehai = tehai.toString();
     const MachiList = tingpai_mianzi(stringTehai);
-    console.log(MachiList);
+    setTehaiPreview(MachiList);
     const getMachistr1:any[] = MachiList.map((list) => (
     list.substring(list.indexOf("[") + 1)
     ));
@@ -77,8 +78,6 @@ setMachiHaiPreview(testArray.sort());
       alert("数字のみ入力してください");
       setTehai("");
     }
-//TODO 文字を入力しているとエラーが出るようにしたいまたは数字のみ入力にしたいtype="number" tehai /0~9/g
-
 }
 
 const deleteCheck = () => {
@@ -244,6 +243,15 @@ function tingpai_mianzi(paistr:any) {
           {/*重複しているものを消したい*/}
           {machiHaiPreview}待ち
           </Box>
+        </Box>
+        <Box textAlign="center" margin="2%">
+          <Text fontSize="25px" fontWeight="bold" color="red.700" >分析した手牌の組み合わせ</Text>
+          <Text fontWeight="600" marginBottom="2%" color="black.900">※()は完成している面子、[]は待ちとなる部分</Text>
+          {tehaiPreview.map((pattern,index) => (
+            <Box key={index}fontSize="20px" borderBottom="solid 1px" width="300px" textAlign="center" margin="1% auto">
+              ★{pattern}
+              </Box>
+          ))}
         </Box>
       </Box>
     </>
