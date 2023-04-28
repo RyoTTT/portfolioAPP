@@ -68,8 +68,8 @@ const machiHaiSplit = machiHai.map((machi) =>{
 })
 const machiHaiFlat = machiHaiSplit.flat();
 const machiHaiFlatSet = new Set(machiHaiFlat);
-const testArray = [...machiHaiFlatSet];
-setMachiHaiPreview(testArray.sort());
+const machiHaiForPreview = [...machiHaiFlatSet];
+setMachiHaiPreview(machiHaiForPreview.sort());
 } else  {
     alert("少牌または多牌です");
     setTehai("");
