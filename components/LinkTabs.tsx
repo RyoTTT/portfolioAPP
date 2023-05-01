@@ -18,8 +18,8 @@ const LinkTabs = () => {
       </BreadcrumbItem>
 
       <BreadcrumbItem>
-        <BreadcrumbLink as={Link} href="./history">
-          対戦履歴
+        <BreadcrumbLink as={Link} href="./seisan">
+          精算
         </BreadcrumbLink>
       </BreadcrumbItem>
 

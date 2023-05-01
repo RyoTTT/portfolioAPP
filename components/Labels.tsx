@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Flex } from '@chakra-ui/react';
-import { Grid, GridItem, Center, Spacer, Text } from '@chakra-ui/react';
+import { Grid, GridItem, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import { getAuth, signOut } from 'firebase/auth';
 import { app } from '@/firebase';
@@ -43,12 +43,11 @@ const Labels = () => {
             </GridItem>
             <GridItem bgColor="blue.200"><Link href="/calculation/calhome">点数計算</Link></GridItem>
             <GridItem bgColor="blue.200"><Link href="../handcheck">待ち牌確認</Link></GridItem>
-            <GridItem bgColor="blue.200"><Link href="../playlist/playlisthome">対戦履歴</Link></GridItem>
+            <GridItem bgColor="blue.200"><Link href="../playlist/playlisthome">履歴/精算</Link></GridItem>
           </Grid>
         </Box>
       </Box>
     </>
   );
 };
-//TODO ４つのタブを真ん中に寄せたい。
 export default Labels;
