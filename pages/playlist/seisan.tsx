@@ -1,12 +1,46 @@
-import { player, playerType } from '@/atoms/atomsForSeisan'
+import { name1Atom, name2Atom, name3Atom, name4Atom, player1, player2, player3, player4, playerType } from '@/atoms/atomsForSeisan'
 import Labels from '@/components/Labels'
 import PlayerInfo1 from '@/components/SeisanComponents/PlayerInfo1'
-import { Box, Select } from '@chakra-ui/react'
-import React from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import PlayerInfo2 from '@/components/SeisanComponents/PlayerInfo2'
+import PlayerInfo3 from '@/components/SeisanComponents/PlayerInfo3'
+import PlayerInfo4 from '@/components/SeisanComponents/PlayerInfo4'
+import { Box, Button, Select } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+import {
+    Table,
+    Thead,
+    Tbody,
+    Tfoot,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+    TableContainer,
+  } from '@chakra-ui/react'
 
-const seisan = () => {
-    const playerName1 = useRecoilValue(player);
+const Seisan = () => {
+    const playerPoint1 = useRecoilValue(player1);
+    const playerName1 = useRecoilValue(name1Atom);
+    const playerPoint2 = useRecoilValue(player2);
+    const playerName2 = useRecoilValue(name2Atom);
+    const playerPoint3 = useRecoilValue(player3);
+    const playerName3 = useRecoilValue(name3Atom);
+    const playerPoint4 = useRecoilValue(player4);
+    const playerName4 = useRecoilValue(name4Atom);
+    const [points,setPoints] = useState<any[]>([]);
+    const graphSet = () => {
+    playerPoint1.map((point1)=>{
+        playerPoint2.map((point2) => {
+            playerPoint3.map((point3) => {
+                playerPoint4.map((point4) => {
+                    const pointsObject = {point1:point1, point2:point2, point3:point3, point4:point4};
+                    setPoints([...points,pointsObject])
+                })
+            })
+        })
+    })
+    }
   return (
     <>
     <Labels />
@@ -20,10 +54,34 @@ const seisan = () => {
     </Select>
     </Box>
     <PlayerInfo1 />
-    <Box>
-    </Box>
+    <PlayerInfo2 />
+    <PlayerInfo3 />
+    <PlayerInfo4 />
+    <Button onClick={graphSet}>セットする</Button>
+    <TableContainer>
+        <Table>
+            <Thead>
+                <Tr>
+                    <Th>{playerName1}</Th>
+                    <Th>{playerName2}</Th>
+                    <Th>{playerName3}</Th>
+                    <Th>{playerName4}</Th>
+                </Tr>
+            </Thead>
+            <Tbody>
+                {points.map((point) =>(
+                    <Tr>
+                        <Td>{point.point1.points}</Td>
+                        <Td>{point.point2.points}</Td>
+                        <Td>{point.point3.points}</Td>
+                        <Td>{point.point4.points}</Td>
+                    </Tr>
+                ))}
+            </Tbody>
+        </Table>
+    </TableContainer>
     </>
   )
 }
 
-export default seisan
+export default Seisan
