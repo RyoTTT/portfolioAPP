@@ -1,10 +1,10 @@
 import { Box, Button, Input } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { name1Atom, player1, playerType } from '@/atoms/atomsForSeisan'
+import { name1Atom, player1, playerType1 } from '@/atoms/atomsForSeisan'
 
 const PlayerInfo = () => {
-  const [playerPoint1,setPlayerPoint1] = useRecoilState<playerType[]>(player1);
+  const [playerPoint1,setPlayerPoint1] = useRecoilState<playerType1[]>(player1);
   const [playerName1,setPlayerName1] = useRecoilState<string>(name1Atom);
   const [playerName,setPlayerName] = useState("");
   const [points,setPoints] = useState(0);

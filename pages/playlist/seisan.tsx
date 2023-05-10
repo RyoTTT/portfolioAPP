@@ -1,11 +1,11 @@
-import { name1Atom, name2Atom, name3Atom, name4Atom, player1, player2, player3, player4, playerType } from '@/atoms/atomsForSeisan'
+import { name1Atom, name2Atom, name3Atom, name4Atom, player1, player2, player3, player4 } from '@/atoms/atomsForSeisan'
 import Labels from '@/components/Labels'
 import PlayerInfo1 from '@/components/SeisanComponents/PlayerInfo1'
 import PlayerInfo2 from '@/components/SeisanComponents/PlayerInfo2'
 import PlayerInfo3 from '@/components/SeisanComponents/PlayerInfo3'
 import PlayerInfo4 from '@/components/SeisanComponents/PlayerInfo4'
 import { Box, Button, Select } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import {
     Table,
@@ -29,6 +29,7 @@ const Seisan = () => {
     const playerPoint4 = useRecoilValue(player4);
     const playerName4 = useRecoilValue(name4Atom);
     const [points,setPoints] = useState<any[]>([]);
+
     const graphSet = () => {
     playerPoint1.map((point1)=>{
         playerPoint2.map((point2) => {
@@ -36,11 +37,19 @@ const Seisan = () => {
                 playerPoint4.map((point4) => {
                     const pointsObject = {point1:point1, point2:point2, point3:point3, point4:point4};
                     setPoints([...points,pointsObject])
+                    const pointsList = [point1.points,point2.points,point3.points,point4.points];
+                    const pointsListSort:any = pointsList.sort((a,b) => (a > b ? -1 : 1));
+                    const num2 = ((pointsListSort[1] - 30000) / 1000 ) + 5;
+                    const num3 = ((pointsListSort[2] - 30000) / 1000 ) - 5;
+                    const num4 = ((pointsListSort[3] - 30000) / 1000 ) - 10;
+                    const num1 = -(num2 + num3 + num4);
+                    console.log(num1,num2,num3,num4);
                 })
             })
         })
     })
     }
+
   return (
     <>
     <Labels />
@@ -70,12 +79,14 @@ const Seisan = () => {
             </Thead>
             <Tbody>
                 {points.map((point) =>(
+                    
                     <Tr>
                         <Td>{point.point1.points}</Td>
                         <Td>{point.point2.points}</Td>
                         <Td>{point.point3.points}</Td>
                         <Td>{point.point4.points}</Td>
                     </Tr>
+                    
                 ))}
             </Tbody>
         </Table>
