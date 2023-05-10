@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Center, Input, Text, Button } from "@chakra-ui/react";
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const auth = getAuth(app);
   const [email, setEmail] = useState("");
@@ -66,4 +66,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

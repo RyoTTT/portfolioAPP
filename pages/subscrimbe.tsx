@@ -4,7 +4,7 @@ import { app } from "../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Center, Input, Text, Button } from "@chakra-ui/react";
 
-const subscribe = () => {
+const Subscribe = () => {
   const router = useRouter();
   const auth = getAuth(app);
   const [email, setEmail] = useState("");
@@ -49,4 +49,4 @@ const subscribe = () => {
   );
 };
 
-export default subscribe;
+export default Subscribe;
