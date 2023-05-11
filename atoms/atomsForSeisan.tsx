@@ -1,51 +1,42 @@
 import { atom } from 'recoil';
 
 export type playerType1 = {
-    points: number,
-}
+    name: string,
+    points: number
+};
+
 export type playerType2 = {
-    points: number,
-}
+    name: string,
+    points: number
+};
+
 export type playerType3 = {
-    points: number,
-}
+    name: string,
+    points: number
+};
+
 export type playerType4 = {
+    name: string,
     points: number,
-}
+};
 
-export const player1 = atom<playerType1[]>({
+
+export const player1 = atom<playerType1>({
     key: 'player1',
-    default: []
+    default: {name:"",points:0}
 })
 
-export const name1Atom = atom<string>({
-    key: 'name1',
-    default:""
-})
-export const player2 = atom<playerType2[]>({
+export const player2 = atom<playerType2>({
     key: 'player2',
-    default: []
+    default: {name:"",points:0}
 })
 
-export const name2Atom = atom<string>({
-    key: 'name2',
-    default:""
-})
-export const player3 = atom<playerType3[]>({
+export const player3 = atom<playerType3>({
     key: 'player3',
-    default: []
+    default: {name:"",points:0}
 })
 
-export const name3Atom = atom<string>({
-    key: 'name3',
-    default:""
-})
-export const player4 = atom<playerType4[]>({
+export const player4 = atom<playerType4>({
     key: 'player4',
-    default: []
-})
-
-export const name4Atom = atom<string>({
-    key: 'name4',
-    default:""
+    default: {name:"",points:0}
 })
