@@ -9,9 +9,9 @@ const PlayerInfo = () => {
   const [points,setPoints] = useState(0);
 
   const playerInfoSet = () => {
-    const newData = {name:playerName,points:points}
+    const newData = {id:3,name:playerName,points:points,seisan:null}
     setPlayer3Data(newData);
-    setPoints(0);
+//    setPoints(0);
   }
   return (
     <Box width="45%" margin="2% auto">
