@@ -4,7 +4,7 @@ import PlayerInfo1 from '@/components/SeisanComponents/PlayerInfo1'
 import PlayerInfo2 from '@/components/SeisanComponents/PlayerInfo2'
 import PlayerInfo3 from '@/components/SeisanComponents/PlayerInfo3'
 import PlayerInfo4 from '@/components/SeisanComponents/PlayerInfo4'
-import { Box, Button, Select, Text } from '@chakra-ui/react'
+import { Box, Button, Input, Select, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
@@ -21,6 +21,11 @@ const Seisan = () => {
     const [playersData,setPlayersData] = useState<any[]>([]);
     const umaDefault = {Top:10,second:5}
     const [uma,setUma]= useState<uma>(umaDefault);
+    const [total1,setTotal1] = useState<number>(0);
+    const [total2,setTotal2] = useState<number>(0);
+    const [total3,setTotal3] = useState<number>(0);
+    const [total4,setTotal4] = useState<number>(0);
+    const [rate,setRate] = useState(0);
 
     const graphSet = () => {
         const x = [player1Data,player2Data,player3Data,player4Data];
@@ -38,34 +43,32 @@ const Seisan = () => {
         const placement1 = {id:x[0].id, name:x[0].name,points:x[0].points,seisan:placement1Seisan}
         x.splice(0,1,placement1);
         x.sort((a,b) => (a.points > b.points ? -1 : 1));
-        setPlayersData(x);
+        setPlayersData([...playersData,x]);
     }
-//            if (index === 1) {
-//                const y = ((element.points- 30000) / 1000 ) + 5;
-//                const data = {id:element.id,name: element.name,points: element.points,seisan:y};
-//                
-//                setx([data,...x]);
-//            } else if (index === 2) {
-//                const y = ((element.points- 30000) / 1000 ) - 5;
-//                const data = {name: element.name,points: element.points,seisan:y};
-//                setx([data,...x]);            
-//            } else if (index === 3) {
-//                const y = ((element.points- 30000) / 1000 ) - 10;
-//                const data = {name: element.name,points: element.points,seisan:y};
-//                setx([data,...x]);
-//            } else if (index === 0) {
-//                const y = ((element.points- 30000) / 1000 ) + 10;
-//                const data = {name: element.name,points: element.points,seisan:y};
-//                setx([data,...x]);
-//            }
-//TODO sortのように並び替えずに大小比較して処理したい
-//                    [{name:あ,point:1234,seisanpoint:null},{name:あ,point:1234},{name:あ,point:1234},{name:あ,point:1234}]
-//                    const pointsListSort:any = pointsList.sort((a,b) => (a > b ? -1 : 1));
-//                    const num2 = ((pointsListSort[1] - 30000) / 1000 ) + 5;
-//                    const num3 = ((pointsListSort[2] - 30000) / 1000 ) - 5;
-//                    const num4 = ((pointsListSort[3] - 30000) / 1000 ) - 10;
-//                    const num1 = -(num2 + num3 + num4);
-//                    console.log(num1,num2,num3,num4);
+const calcTotal = () => {
+        playersData.map((element) => {
+            element.map((player:any) => {
+                switch(player.id) {
+                    case 1:
+                        const totala = total1 + player.seisan;
+                        setTotal1(totala);
+                        break;
+                    case 2:
+                        const totalb = total2 + player.seisan;
+                        setTotal2(totalb);
+                        break;
+                    case 3:
+                        const totalc = total3 + player.seisan;
+                        setTotal3(totalc);
+                        break;
+                    case 4:
+                        const totald = total4 + player.seisan;
+                        setTotal4(totald);
+                        break;
+                }
+            })
+        })
+}
 const umaChange = (e:any) => {
     const selectedOption = Number(e.target.value);
     if (selectedOption === 1) {
@@ -94,6 +97,8 @@ return (
         <option value="3">10-30</option>
         <option value="4">20-30</option>
     </Select>
+        <Text>レートを入力</Text>
+        <Input placeholder='レート' onChange={(e) => setRate(Number(e.target.value))}></Input> 
         <Text fontSize="18px" marginTop="1%">25000点、30000点返しです</Text>
     </Box>
     <Box border="solid 3px red" width="1000px"margin="0 auto">
@@ -110,15 +115,39 @@ return (
     <Button onClick={graphSet}>セットする</Button>
     </Box>
         {playersData.map((element)=>(
-            <Box key={element.id}>
-            <Text>名前:{element.name}</Text>
-            <Text>{element.points}点</Text>
-            <Text>{element.seisan}点</Text>
+        <Box>
+            <Box key={element[0].id}>
+            <Text>{element[0].name}</Text>
+            <Text>{element[0].points}</Text>
+            <Text>{element[0].seisan}</Text>
+            </Box>
+            <Box key={element[1].id}>
+            <Text>{element[1].name}</Text>
+            <Text>{element[1].points}</Text>
+            <Text>{element[1].seisan}</Text>
+            </Box>
+            <Box key={element[2].id}>
+            <Text>{element[2].name}</Text>
+            <Text>{element[2].points}</Text>
+            <Text>{element[2].seisan}</Text>
+            </Box>
+            <Box key={element[3].id}>
+            <Text>{element[3].name}</Text>
+            <Text>{element[3].points}</Text>
+            <Text>{element[3].seisan}</Text>
+            </Box>
             </Box>
         ))}
+        <Button onClick={calcTotal}>集計する</Button>
+        <Box>
+            <Text>{player1Data.name}:{total1}({total1 * rate}円)</Text>
+            <Text>{player2Data.name}:{total2}({total2 * rate}円)</Text>
+            <Text>{player3Data.name}:{total3}({total3 * rate}円)</Text>
+            <Text>{player4Data.name}:{total4}({total4 * rate}円)</Text>
+        </Box>
 
     </>
 )
 }
-//TODO　プレイヤー情報を表のようにCSS当てる。レートと最終順位集計欄作成
+//TODO　プレイヤー情報を表のようにCSS当てる。
 export default Seisan
