@@ -114,40 +114,50 @@ return (
     <Box width="1000px" textAlign="center" margin="2% auto">
     <Button onClick={graphSet}>セットする</Button>
     </Box>
+    <Box width="600px" justifyContent="center" margin="0 auto" border="ridge 2mm blue" >
+        <Box fontSize="18px" display="flex" justifyContent="center" textAlign="center" flexWrap="wrap" borderBottom=" solid 2px">
+            <Text margin="1% 3%" flexGrow="1">1位</Text>
+            <Text margin="1% 3%" flexGrow="1">2位</Text>
+            <Text margin="1% 3%" flexGrow="1">3位</Text>
+            <Text margin="1% 3%" flexGrow="1">4位</Text>
+        </Box>
         {playersData.map((element)=>(
-        <Box>
-            <Box key={element[0].id}>
-            <Text>{element[0].name}</Text>
-            <Text>{element[0].points}</Text>
-            <Text>{element[0].seisan}</Text>
+        <Box display="flex" flexWrap="wrap">
+            <Box key={element[0].id} fontSize="18px" margin="0.5% 2%" flexGrow="1" textAlign="center">
+            <Text borderBottom="dashed 0.5px">{element[0].name}</Text>
+            <Text borderBottom="dashed 0.5px">{element[0].points}</Text>
+            <Text  borderBottom="dashed 0.5px">{element[0].seisan}</Text>
             </Box>
-            <Box key={element[1].id}>
-            <Text>{element[1].name}</Text>
-            <Text>{element[1].points}</Text>
-            <Text>{element[1].seisan}</Text>
+            <Box key={element[1].id}  fontSize="18px"margin="0.5% 2%" flexGrow="1" textAlign="center">
+            <Text borderBottom="dashed 0.5px">{element[1].name}</Text>
+            <Text borderBottom="dashed 0.5px">{element[1].points}</Text>
+            <Text borderBottom="dashed 0.5px" >{element[1].seisan}</Text>
             </Box>
-            <Box key={element[2].id}>
-            <Text>{element[2].name}</Text>
-            <Text>{element[2].points}</Text>
-            <Text>{element[2].seisan}</Text>
+            <Box key={element[2].id} fontSize="18px"margin="0.5% 2%" flexGrow="1" textAlign="center">
+            <Text borderBottom="dashed 0.5px">{element[2].name}</Text>
+            <Text borderBottom="dashed 0.5px">{element[2].points}</Text>
+            <Text borderBottom="dashed 0.5px">{element[2].seisan}</Text>
             </Box>
-            <Box key={element[3].id}>
-            <Text>{element[3].name}</Text>
-            <Text>{element[3].points}</Text>
-            <Text>{element[3].seisan}</Text>
+            <Box key={element[3].id}fontSize="18px" margin="0.5% 2%" flexGrow="1" textAlign="center">
+            <Text borderBottom="dashed 0.5px">{element[3].name}</Text>
+            <Text borderBottom="dashed 0.5px">{element[3].points}</Text>
+            <Text borderBottom="dashed 0.5px">{element[3].seisan}</Text>
             </Box>
             </Box>
         ))}
-        <Button onClick={calcTotal}>集計する</Button>
-        <Box>
-            <Text>{player1Data.name}:{total1}({total1 * rate}円)</Text>
-            <Text>{player2Data.name}:{total2}({total2 * rate}円)</Text>
-            <Text>{player3Data.name}:{total3}({total3 * rate}円)</Text>
-            <Text>{player4Data.name}:{total4}({total4 * rate}円)</Text>
+        </Box>
+        <Box width="1000px" margin="2% auto" textAlign="center">
+        <Button onClick={calcTotal} >集計する</Button>
+        </Box>
+        <Box display="flex" width="1000px" justifyContent="center" margin="0 auto" fontSize="20px" fontWeight="800">
+            <Text margin="2%">{player1Data.name}:{total1}({total1 * rate}円)</Text>
+            <Text margin="2%">{player2Data.name}:{total2}({total2 * rate}円)</Text>
+            <Text margin="2%">{player3Data.name}:{total3}({total3 * rate}円)</Text>
+            <Text margin="2%">{player4Data.name}:{total4}({total4 * rate}円)</Text>
         </Box>
 
     </>
 )
 }
-//TODO　プレイヤー情報を表のようにCSS当てる。
+//TODO　表CSS当てる。
 export default Seisan
