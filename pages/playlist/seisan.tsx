@@ -159,5 +159,4 @@ return (
     </>
 )
 }
-//TODO　表CSS当てる。
 export default Seisan

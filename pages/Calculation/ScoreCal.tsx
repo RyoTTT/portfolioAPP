@@ -18,6 +18,10 @@ import { Minkan8Button } from "@/components/CalculationComponents/YakustateButto
 import { Minkan16Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Minkan16Button";
 import { Ankan16Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Ankan16Button";
 import { Ankan32Button } from "@/components/CalculationComponents/YakustateButtons/MentsuButtons/Ankan32Button";
+import { collection, addDoc } from "firebase/firestore";
+import db from "../../firebase";
+import { getAuth } from "firebase/auth";
+import { app } from "@/firebase";
 
 //Switchで〜以上という条件分岐させたい
 const ScoreCal = () => {
@@ -46,6 +50,9 @@ const ScoreCal = () => {
   //ボタンクリック管理
   const [oyaClick, setOyaClick] = useState<boolean>(false);
   const [honbaClick, setHonbaClick] = useState<boolean>(false);
+  //firebase用
+  const [yakurecord,setYakurecord] = useState<string[]>([]);
+
   //役数カウント
   const han1Add = () => {
     setHanCount(hanCount + 1);
@@ -1068,6 +1075,17 @@ const ScoreCal = () => {
     setHanCount(0);
     setYakuStateList([]);
   }
+
+  const yakuUpload = () => {
+    const auth = getAuth(app);
+    const user = auth.currentUser?.displayName;
+    setYakurecord(yakuStateList);
+    addDoc(collection(db,"posts"),{
+      user:user,
+      yaku:yakurecord
+    });
+  }
+
   
   return (
     <>
@@ -1355,7 +1373,7 @@ const ScoreCal = () => {
           <Box key={index} fontSize="25px" flexDirection="column" borderBottom="solid" width="200px" maxWidth="100%" margin="0 auto" textAlign="center">★{yaku}</Box>
         ))}
         <Box>
-        <Button>記録する</Button>
+        <Button onClick={yakuUpload}>記録する</Button>
         <Button onClick={resetScore}>リセットする</Button>
         </Box>
     </>
