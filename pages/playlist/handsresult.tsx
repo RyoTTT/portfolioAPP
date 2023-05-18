@@ -13,38 +13,45 @@ import {
 } from "@chakra-ui/react";
 import LinkTabs from "../../components/LinkTabs";
 import  db  from '../../firebase';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, where, query } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { app } from "@/firebase";
 
 
 
 const handsresult = () => {
-  const [yakuData,setYakuData] = useState({});
+  const [yakuData,setYakuData] = useState<string[]>([]);
+  const [errorCheck,setErrorCheck] = useState(false);
   useEffect(() => {
   const auth = getAuth(app);
-  const user = auth.currentUser?.displayName; 
-  const postData = collection(db,"posts");
-  // TODO データを取得してuser名が一致するデータのみ表示用のarrayにセットしたい。
+  const user = auth.currentUser?.uid;
+
+  try {
+  const postData = query(collection(db,"yakuList"), where("userId","==", user));
   getDocs(postData).then((element) => {
-    console.log(element.docs.map((doc)=> doc.data()))
-    const dataList = element.docs.map((doc)=> doc.data());
-  dataList.map((data) => {
-    if (data.user == user) {
-      setYakuData([data]);
-  } else return;
-  });
-  });
+  //console.log(element.docs.map((doc)=> doc.data().yaku))
+  //役が入ってる配列をstateにセットしたい
+  element.docs.map((doc)=> {
+//  console.log(doc.data().yaku);
+  doc.data().yaku.length > 0 ? setYakuData([...yakuData,doc.data().yaku]) : console.log(0);
+  })
+  setErrorCheck(false);
   console.log(yakuData);
+  })
+  } catch (error) {
+    console.log(error)
+    setErrorCheck(true);
+  }
   },[])
 
   return (
     <>
     <Labels />
     <LinkTabs />
-
+    {errorCheck ? 
+    <Box>ログインしてください</Box>
+        :
     <Box margin="0 10%">
-
     <TableContainer>
           <Table variant="simple">
             <TableCaption>アガリ役履歴</TableCaption>
@@ -69,7 +76,9 @@ const handsresult = () => {
             </Tbody>
           </Table>
         </TableContainer>
-        </Box>
+        </Box> 
+        }
+
     </>
   )
 }

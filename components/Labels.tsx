@@ -43,7 +43,7 @@ const Labels = () => {
             </GridItem>
             <GridItem bgColor="blue.200"><Link href="/calculation/calhome">点数計算</Link></GridItem>
             <GridItem bgColor="blue.200"><Link href="../handcheck">待ち牌確認</Link></GridItem>
-            <GridItem bgColor="blue.200"><Link href="../playlist/playlisthome">履歴/精算</Link></GridItem>
+            <GridItem bgColor="blue.200"><Link href="../playlist/playlisthome">履歴</Link></GridItem>
           </Grid>
         </Box>
       </Box>

@@ -1078,11 +1078,10 @@ const ScoreCal = () => {
 
   const yakuUpload = () => {
     const auth = getAuth(app);
-    const user = auth.currentUser?.displayName;
-    setYakurecord(yakuStateList);
-    addDoc(collection(db,"posts"),{
-      user:user,
-      yaku:yakurecord
+    const user = auth.currentUser?.uid;
+    addDoc(collection(db,"yakuList"),{
+      userId:user,
+      yaku:yakuStateList
     });
   }
 
