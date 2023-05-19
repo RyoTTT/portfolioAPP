@@ -9,8 +9,8 @@ import Link from 'next/link';
 
 const LinkTabs = () => {
   return (
-    <Center>
-    <Breadcrumb>
+    <Center marginTop="2%" borderBottom="solid 1px">
+    <Breadcrumb fontSize="19px">
       <BreadcrumbItem>
         <BreadcrumbLink as={Link} href="./handsresult">
           役アガリ歴

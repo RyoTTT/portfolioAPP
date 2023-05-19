@@ -1,5 +1,6 @@
 import { player1, player2, player3, player4,playerType1,playerType2,playerType3,playerType4 } from '@/atoms/atomsForSeisan'
 import Labels from '@/components/Labels'
+import LinkTabs from '@/components/LinkTabs'
 import PlayerInfo1 from '@/components/SeisanComponents/PlayerInfo1'
 import PlayerInfo2 from '@/components/SeisanComponents/PlayerInfo2'
 import PlayerInfo3 from '@/components/SeisanComponents/PlayerInfo3'
@@ -89,6 +90,7 @@ const umaChange = (e:any) => {
 return (
     <>
     <Labels />
+    <LinkTabs />
     <Box width="400px" margin="1% auto">
         <Text>ウマを選択</Text>
     <Select onChange={(e)=>umaChange(e)}>

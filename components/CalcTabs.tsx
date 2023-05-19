@@ -4,16 +4,13 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Center,
-  Box
+  Box,
 } from "@chakra-ui/react";
-import Labels from "../../components/Labels";
 import Link from "next/link";
 
 const CalculationHome = () => {
   return (
     <>
-      <Labels />
-      
       <Center margin="30px">
         <Breadcrumb>
           <BreadcrumbItem>
