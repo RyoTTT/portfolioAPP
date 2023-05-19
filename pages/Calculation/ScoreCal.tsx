@@ -22,6 +22,8 @@ import { collection, addDoc } from "firebase/firestore";
 import db from "../../firebase";
 import { getAuth } from "firebase/auth";
 import { app } from "@/firebase";
+import Labels from "@/components/Labels";
+import CalcTabs from "@/components/CalcTabs";
 
 //Switchで〜以上という条件分岐させたい
 const ScoreCal = () => {
@@ -1088,7 +1090,8 @@ const ScoreCal = () => {
   
   return (
     <>
-      <CalculationHome />
+      <Labels />
+      <CalcTabs />
       <Box border="solid" margin="2% 2%">
         <Text fontSize="25px" fontWeight="bold">
           卓の状況

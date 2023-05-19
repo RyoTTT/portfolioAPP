@@ -12,8 +12,8 @@ const Hands = () => {
   return (
     <>
       <Labels />
-      <Tabs>
-        <TabList>
+      <Tabs marginTop="3%">
+        <TabList fontSize="18px">
           <Tab>役検索</Tab>
           <Tab>すべて</Tab>
           <Tab>1翻</Tab>

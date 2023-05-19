@@ -1,5 +1,5 @@
 import React from "react";
-import CalculationHome from "./calhome";
+
 import { Box } from "@chakra-ui/react";
 import {
   Table,
@@ -12,11 +12,14 @@ import {
   TableContainer,
   Text,
 } from "@chakra-ui/react";
+import Labels from "@/components/Labels";
+import CalcTabs from "@/components/CalcTabs";
 
 const ScoreGraph = () => {
   return (
     <>
-      <CalculationHome />
+      <Labels />
+      <CalcTabs />
       <Box border="solid" margin="5% 1%">
         <Text textAlign="center" fontSize="30px" color="red">
           「親の点数」

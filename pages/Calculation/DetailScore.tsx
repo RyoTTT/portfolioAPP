@@ -1,5 +1,4 @@
 import React from "react";
-import CalculationHome from "./calhome";
 import { Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
@@ -10,12 +9,15 @@ import About from "@/components/DetailScoreTabs/About";
 import Machi from "@/components/DetailScoreTabs/Machi";
 import Mentsu from "@/components/DetailScoreTabs/Mentsu";
 import Hosoku from "@/components/DetailScoreTabs/Hosoku";
+import Labels from "@/components/Labels";
+import CalcTabs from "@/components/CalcTabs";
 
 //next/Imageを使って画像を使いたい
 const DetailScore = () => {
   return (
     <>
-      <CalculationHome />
+      <Labels />
+      <CalcTabs />
       <Tabs maxWidth="1500px" w="100%">
         <TabList >
           <Tab>符計算の概要</Tab>

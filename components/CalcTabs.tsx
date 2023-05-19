@@ -8,11 +8,11 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-const CalculationHome = () => {
+const CalcTabs = () => {
   return (
     <>
-      <Center margin="30px">
-        <Breadcrumb>
+      <Center marginTop="2%" borderBottom="solid 1px">
+        <Breadcrumb fontSize="19px">
           <BreadcrumbItem>
             <BreadcrumbLink as={Link} href="../calculation/scorecal">
               得点計算
@@ -36,4 +36,4 @@ const CalculationHome = () => {
   );
 };
 
-export default CalculationHome;
+export default CalcTabs;
