@@ -19,9 +19,9 @@ const PlayList = () => {
     <LinkTabs />
     <Box>
     <Box margin="1% 20%">
-    <Input placeholder='得点を入力'></Input>
     <Input placeholder='順位'></Input>
-    <Input placeholder='精算した点数'></Input>
+    <Input placeholder="スコア(レート換算)"></Input>
+    <Input placeholder='備考'></Input>
     <Button>追加</Button>
     </Box>
     <Box>

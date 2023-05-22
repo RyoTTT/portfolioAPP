@@ -22,6 +22,7 @@ import { app } from "@/firebase";
 const handsresult = () => {
   const [yakuData,setYakuData] = useState<string[][]>([]);
   const [errorCheck,setErrorCheck] = useState(false);
+
   const auth = getAuth(app);
   const user = auth.currentUser?.uid;
   useEffect(() => {
@@ -33,7 +34,6 @@ const handsresult = () => {
   })
   } catch (error) {
     console.log(error)
-    setErrorCheck(true);
   }
   },[]);
   const arrayNumCount = (array:string[],value:string) => {
@@ -42,14 +42,13 @@ const handsresult = () => {
     || typeof array.length === "undefined"
     || typeof value === "undefined"){return null;}
     let count = 0;
-    for(let i=0; i<array.length; i++){
+    for(let i=0; i < array.length; i++){
       if(array[i] === value){
         count++;
       }
     }
     return count;
   }
-  console.log(yakuData.flat());
   const yakuAgariArr = [
     {name:"立直",num:arrayNumCount(yakuData.flat(),'立直')},
     {name:"平和",num:arrayNumCount(yakuData.flat(),'平和')},
@@ -77,10 +76,6 @@ const handsresult = () => {
     {name:"二盃口",num:arrayNumCount(yakuData.flat(),'二盃口')},
     {name:"チンイツ",num:arrayNumCount(yakuData.flat(),'チンイツ')! + arrayNumCount(yakuData.flat(),'チンイツ(鳴き)')!}
   ];
-
-  const sortArr = () => {
-    yakuAgariArr.sort((a,b) => (a.num! > b.num! ? -1 : 1))
-  }
   return (
     <>
     <Labels />
@@ -90,7 +85,6 @@ const handsresult = () => {
         :
     <Box margin="0 10%">
     <Box>
-      <Button onClick={sortArr} size="sm">並び替え</Button>
     </Box>
     <TableContainer width="600px" margin="0 auto">
           <Table variant="simple">
@@ -107,7 +101,7 @@ const handsresult = () => {
                 <Tr key={yaku.name}>
                   <Td fontSize="20px" textAlign="center">{yaku.name}</Td>
                   <Td fontSize="20px">{yaku.num}回</Td>
-                  <Td fontSize="20px">{ Math.floor( yaku.num! / yakuData.flat().length * 100 * Math.pow(10,1) ) / Math.pow(10,1) }%</Td>
+                  <Td fontSize="20px">{yaku.num ? Math.floor( yaku.num! / yakuData.flat().length * 100 * Math.pow(10,1) ) / Math.pow(10,1) : 0}%</Td>
                 </Tr>
               ))}
             </Tbody>
