@@ -44,6 +44,8 @@ const ScoreCal = () => {
   const [ankoCount, setAnkoCount] = useState<number>(0);
   const [minkanCount, setMinkanCount] = useState<number>(0);
   const [ankanCount,setAnkanCount] = useState<number>(0);
+  const [atamaCheck,setAtamaCheck] = useState<boolean>(false);
+  const [machiCheck,setMachiCheck] = useState<boolean>(false);
   //特殊計算になる役を管理
   const [tsumoCheck, setTsumoCheck] = useState<boolean>(false);
   const [pinhuCheck, setPinhuCheck] = useState<boolean>(false);
@@ -82,6 +84,8 @@ const ScoreCal = () => {
     setAnkoCount(0);
     setMinkanCount(0);
     setAnkanCount(0);
+    setAtamaCheck(false);
+    setMachiCheck(false);
   };
 
   //計算機
@@ -340,6 +344,11 @@ const ScoreCal = () => {
               { name: "子", score: 6000 },
             ]);
             break;
+          case 13:
+            setTsumoScore([
+              { name: "親", score: 16000 },
+              { name: "子", score: 8000 },
+            ]);
         }
       } //ツモの計算
       else if (
@@ -1067,6 +1076,8 @@ const ScoreCal = () => {
     setAnkoCount(0);
     setMinkanCount(0);
     setAnkanCount(0);
+    setAtamaCheck(false);
+    setMachiCheck(false);
   }
 
   const hanReset = () => {
@@ -1086,7 +1097,15 @@ const ScoreCal = () => {
       yaku:yakuStateList
     });
   }
+  const atama = () => {
+    setFuCount(fuCount + 2);
+    setAtamaCheck(true);
+  }
 
+  const machi = () => {
+    setFuCount(fuCount + 2);
+    setMachiCheck(true);
+    }
   
   return (
     <>
@@ -1346,11 +1365,13 @@ const ScoreCal = () => {
         </Box>
         <Box margin="1% auto">
           <Text>アタマが役牌であれば押す</Text>
-          <Button onClick={() => setFuCount(fuCount + 2)}>アタマ</Button>
+          <Button onClick={atama} isDisabled={atamaCheck}>アタマ</Button>
+          {atamaCheck ? <Text>アタマ +2符です</Text> : <></>}
         </Box>
         <Box margin="1% auto">
           <Text>待ち(ペンチャン・カンチャン・タンキ・ノベタン)のみ</Text>
-          <Button onClick={() => setFuCount(fuCount + 2)}>待ち</Button>
+          <Button onClick={machi} isDisabled={machiCheck}>待ち</Button>
+          {machiCheck ? <Text>待ち +2符です</Text> : <></>}
         </Box>
         <Text textAlign="center" fontSize="35px" fontWeight="bold">合計:{fuCount}符</Text>
         <Box>
@@ -1374,12 +1395,11 @@ const ScoreCal = () => {
         {yakuStateList.map((yaku, index) => (
           <Box key={index} fontSize="25px" flexDirection="column" borderBottom="solid" width="200px" maxWidth="100%" margin="0 auto" textAlign="center">★{yaku}</Box>
         ))}
-        <Box>
-        <Button onClick={yakuUpload}>記録する</Button>
+        <Box textAlign="center" marginTop="2%">
+        <Button onClick={yakuUpload} marginRight="1%">記録する</Button>
         <Button onClick={resetScore}>リセットする</Button>
         </Box>
     </>
   );
 };
-//TODO 親、本場機能確認、実装
 export default ScoreCal;

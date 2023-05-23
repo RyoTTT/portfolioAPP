@@ -1,5 +1,5 @@
 import Labels from "@/components/Labels";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button, Text, Box } from "@chakra-ui/react";
 
 const HandCheck = () => {
@@ -7,10 +7,10 @@ const HandCheck = () => {
    const [tehai, setTehai] = useState<string>("");
    const [machiHaiPreview, setMachiHaiPreview] = useState<any[]>([]); 
    const [tehaiPreview, setTehaiPreview] = useState<any[]>([]);
-
-
+   const [resultPreview, setResultPreview] = useState<boolean>(false);
 
 const tenpaiCheck = () => {
+  setResultPreview(true);
     if (!tehai) return;
     if (tehai.match(/\d/g)) {
     if (tehai.toString().length === 13 ) {
@@ -221,6 +221,7 @@ function tingpai_mianzi(paistr:any) {
 
   return Object.keys(rv);
 }
+
   return (
     <>
       <Labels />
@@ -231,6 +232,8 @@ function tingpai_mianzi(paistr:any) {
           <Button onClick={tenpaiCheck} margin="2% 1%">確認</Button>
           <Button onClick={deleteCheck}>取り消し</Button>
         </Box>
+        { resultPreview ? 
+        <>
         <Box marginTop="7%" width="600px" margin="0 auto">
           <Text fontSize="30px" fontWeight="bold">
             結果
@@ -253,6 +256,7 @@ function tingpai_mianzi(paistr:any) {
               </Box>
           ))}
         </Box>
+        </> : <></> }
       </Box>
     </>
   );

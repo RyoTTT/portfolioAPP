@@ -1,6 +1,6 @@
 import Labels from '@/components/Labels'
 import React, { useEffect, useState } from 'react'
-import { Box, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import {
   Table,
   Thead,
