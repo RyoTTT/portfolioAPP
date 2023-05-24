@@ -18,7 +18,7 @@ import { getAuth } from "firebase/auth";
 import { app } from "@/firebase";
 import Link from "next/link";
 
-const totalresult = () => {
+const Totalresult = () => {
   const [rank,setRank] = useState<number | undefined>(undefined);
   const [score,setScore] = useState<number | undefined>(undefined);
   const [text,setText] = useState("");
@@ -119,4 +119,4 @@ const totalresult = () => {
   );
 };
 
-export default totalresult;
+export default Totalresult;

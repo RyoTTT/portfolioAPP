@@ -20,7 +20,7 @@ import Link from 'next/link';
 
 
 
-const handsresult = () => {
+const Handsresult = () => {
   const [yakuData,setYakuData] = useState<string[][]>([]);
   const [errorCheck,setErrorCheck] = useState(false);
 
@@ -119,4 +119,4 @@ const handsresult = () => {
   )
 }
 
-export default handsresult
+export default Handsresult
