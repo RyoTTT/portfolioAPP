@@ -1,5 +1,5 @@
 import Labels from "@/components/Labels";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Input, Button, Text, Box } from "@chakra-ui/react";
 
 const HandCheck = () => {

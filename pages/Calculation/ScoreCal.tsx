@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CalculationHome from "./calhome";
-import { Box, Text, Button, ButtonGroup, Center } from "@chakra-ui/react";
+import { Box, Text, Button, ButtonGroup } from "@chakra-ui/react";
 import YakuStateButton from "@/components/CalculationComponents/YakustateButtons/YakuStateButton";
 import YakuStateButtonForTsumo from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForTsumo";
 import YakuStateButtonForPinhu from "@/components/CalculationComponents/YakustateButtons/YakuStateButtonForPinhu";

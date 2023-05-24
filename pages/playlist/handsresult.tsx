@@ -1,6 +1,6 @@
 import Labels from '@/components/Labels'
 import React, { useEffect, useState } from 'react'
-import { Box } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import {
   Table,
   Thead,
@@ -16,6 +16,7 @@ import  db  from '../../firebase';
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { app } from "@/firebase";
+import Link from 'next/link';
 
 
 
@@ -34,6 +35,7 @@ const handsresult = () => {
   })
   } catch (error) {
     console.log(error)
+    setErrorCheck(true);
   }
   },[]);
   const arrayNumCount = (array:string[],value:string) => {
@@ -81,7 +83,10 @@ const handsresult = () => {
     <Labels />
     <LinkTabs />
     {errorCheck ? 
-    <Box>ログインしてください</Box>
+    <Box textAlign="center" margin="5% auto">
+      <Heading>ログインしてください</Heading>
+      <Text borderBottom="solid 1px" display="inline-block" marginTop="2%"><Link href="/login">ログインする</Link></Text>
+      </Box>
         :
     <Box margin="0 10%">
     <Box>

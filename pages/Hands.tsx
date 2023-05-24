@@ -1,6 +1,5 @@
 import React from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Input } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Labels from "../components/Labels";
 import Yaku3 from "@/components/YakuPageComponents/HanList/Han3";
 import Yaku6 from "@/components/YakuPageComponents/HanList/Han6";

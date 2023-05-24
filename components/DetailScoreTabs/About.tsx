@@ -1,15 +1,5 @@
 import React from "react";
-import { Box, Heading, Text, Highlight } from "@chakra-ui/react";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableContainer,
-} from "@chakra-ui/react";
-//l.24~30文字を綺麗な横並びにしたい
+import { Box, Heading, Text } from "@chakra-ui/react";
 const About = () => {
   return (
     <>

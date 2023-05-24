@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Highlight, Image, Text } from '@chakra-ui/react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import Link from 'next/link';
 import { getAuth, signOut } from 'firebase/auth';
@@ -38,12 +38,12 @@ const Labels = () => {
         </Flex>
         <Box marginTop="1%">
           <Grid templateColumns="repeat(4,1fr)" gap={2} maxWidth="100%" w="2000px" h="40px" textAlign="center" fontWeight="bold" >
-            <GridItem bgColor="blue.200" borderRadius="10px">
-              <Text><Link href="../hands">役</Link></Text>
+            <GridItem bgColor="blue.200" borderRadius="10px" >
+              <Link href="../hands"><Highlight query={["役"]}styles={{borderBottom:'solid 1px'}}>役</Highlight></Link>
             </GridItem>
-            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="/calculation/calhome" >点数計算</Link></GridItem>
-            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../handcheck">待ち牌確認</Link></GridItem>
-            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../playlist/playlisthome">履歴</Link></GridItem>
+            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="/calculation/calhome" ><Highlight query={["点数計算"]}styles={{borderBottom:'solid 1px'}}>点数計算</Highlight></Link></GridItem>
+            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../handcheck"><Highlight query={["待ち牌確認"]}styles={{borderBottom:'solid 1px'}}>待ち牌確認</Highlight></Link></GridItem>
+            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../playlist/playlisthome"><Highlight query={["履歴"]}styles={{borderBottom:'solid 1px'}}>履歴</Highlight></Link></GridItem>
           </Grid>
         </Box>
       </Box>

@@ -1,6 +1,6 @@
 import Labels from "@/components/Labels";
 import React, { useEffect, useState } from "react";
-import { Box, Input, Button, Text, Textarea, VStack} from "@chakra-ui/react";
+import { Box, Input, Button, Text, Textarea, VStack, Heading} from "@chakra-ui/react";
 import {
   Table,
   Thead,
@@ -16,6 +16,7 @@ import { collection, addDoc, getDocs, where, query  } from "firebase/firestore";
 import db from "../../firebase";
 import { getAuth } from "firebase/auth";
 import { app } from "@/firebase";
+import Link from "next/link";
 
 const totalresult = () => {
   const [rank,setRank] = useState<number | undefined>(undefined);
@@ -64,7 +65,10 @@ const totalresult = () => {
       <Labels />
       <LinkTabs />
       {errorCheck ? 
-      <Box>ログインしてください</Box>
+    <Box textAlign="center" margin="5% auto">
+    <Heading>ログインしてください</Heading>
+    <Text borderBottom="solid 1px" display="inline-block" marginTop="2%"><Link href="/login">ログインする</Link></Text>
+    </Box>
       :
       <Box margin="0 10%">
       <VStack w="600px" margin="2% auto">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Heading, Text, Input, Select,Button } from '@chakra-ui/react';
+import { Box, Heading, Input, Select,Button } from '@chakra-ui/react';
 import { YakuObject, YakuSearchList } from './YakuForSearch';
 
 const YakuSearch = () => {

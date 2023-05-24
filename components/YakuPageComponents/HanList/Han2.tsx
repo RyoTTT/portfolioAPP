@@ -1,6 +1,4 @@
 import React from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
-import Image from "next/image";
 import { DoubleReach } from "../YakuList/YakuBox2/DoubleReach";
 import { Chitoitsu } from "../YakuList/YakuBox2/Chitoitsu";
 import { SanshokuD } from "../YakuList/YakuBox2/SanshokuD";

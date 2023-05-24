@@ -1,7 +1,7 @@
 import Labels from "@/components/Labels";
 import LinkTabs from "../../components/LinkTabs"
 import React from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Highlight, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 
@@ -13,8 +13,8 @@ const index = () => {
       <Box marginTop="4%">
         <Box textAlign="center" width="900px" margin="2% auto">
           <Heading color="red.400" borderBottom="double">役アガリ歴</Heading>
-          <Text fontSize="18px" margin="1% auto">点数計算の得点計算ページで計算した結果から自分がどんな役をどれくらい和了したかを確認できます。</Text>
-          <Text fontSize="18px">得点計算ページは<Link href="/calculation/scorecal">こちら</Link></Text>
+          <Text fontSize="18px" margin="1% auto">点数計算の得点計算ページで計算した結果から自分がどの役をどれくらい和了したかを確認できます。</Text>
+          <Text fontSize="18px">得点計算ページは<Link href="/calculation/scorecal"><Highlight query={['こちら']} styles={{borderBottom:'solid 1px' }}>こちら</Highlight></Link></Text>
         </Box>
         <Box textAlign="center" width="900px" margin="2% auto">
           <Heading color="blue.400" borderBottom="double">精算</Heading>
