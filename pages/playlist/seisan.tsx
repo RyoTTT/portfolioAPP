@@ -123,8 +123,8 @@ return (
             <Text margin="1% 3%" flexGrow="1">3位</Text>
             <Text margin="1% 3%" flexGrow="1">4位</Text>
         </Box>
-        {playersData.map((element)=>(
-        <Box display="flex" flexWrap="wrap">
+        {playersData.map((element,index)=>(
+        <Box key={index} display="flex" flexWrap="wrap">
             <Box key={element[0].id} fontSize="18px" margin="0.5% 2%" flexGrow="1" textAlign="center">
             <Text borderBottom="dashed 0.5px">{element[0].name}</Text>
             <Text borderBottom="dashed 0.5px">{element[0].points}</Text>
