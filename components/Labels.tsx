@@ -39,11 +39,11 @@ const Labels = () => {
         <Box marginTop="1%">
           <Grid templateColumns="repeat(4,1fr)" gap={2} maxWidth="100%" w="2000px" h="40px" textAlign="center" fontWeight="bold" >
             <GridItem bgColor="blue.200" borderRadius="10px" >
-              <Link href="../hands"><Highlight query={["役"]}styles={{borderBottom:'solid 1px'}}>役</Highlight></Link>
+              <Link href="/hands"><Highlight query={["役"]}styles={{borderBottom:'solid 1px'}}>役</Highlight></Link>
             </GridItem>
             <GridItem bgColor="blue.200" borderRadius="10px"><Link href="/calculation/calhome" ><Highlight query={["点数計算"]}styles={{borderBottom:'solid 1px'}}>点数計算</Highlight></Link></GridItem>
-            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../handcheck"><Highlight query={["待ち牌確認"]}styles={{borderBottom:'solid 1px'}}>待ち牌確認</Highlight></Link></GridItem>
-            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="../playlist/playlisthome"><Highlight query={["履歴"]}styles={{borderBottom:'solid 1px'}}>履歴</Highlight></Link></GridItem>
+            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="/handcheck"><Highlight query={["待ち牌確認"]}styles={{borderBottom:'solid 1px'}}>待ち牌確認</Highlight></Link></GridItem>
+            <GridItem bgColor="blue.200" borderRadius="10px"><Link href="/playlist/playlisthome"><Highlight query={["履歴"]}styles={{borderBottom:'solid 1px'}}>履歴</Highlight></Link></GridItem>
           </Grid>
         </Box>
       </Box>

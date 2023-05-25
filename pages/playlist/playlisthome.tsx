@@ -5,7 +5,7 @@ import { Box, Heading, Highlight, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 
-const index = () => {
+const playListHome = () => {
   return (
     <>
       <Labels />
@@ -29,4 +29,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default playListHome;

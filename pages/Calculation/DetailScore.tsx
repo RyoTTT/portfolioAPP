@@ -10,7 +10,6 @@ import Hosoku from "@/components/DetailScoreTabs/Hosoku";
 import Labels from "@/components/Labels";
 import CalcTabs from "@/components/CalcTabs";
 
-//next/Imageを使って画像を使いたい
 const DetailScore = () => {
   return (
     <>
