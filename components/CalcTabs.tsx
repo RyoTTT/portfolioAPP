@@ -13,19 +13,19 @@ const CalcTabs = () => {
       <Center marginTop="2%" borderBottom="solid 1px">
         <Breadcrumb fontSize="19px">
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../calculation/scorecal">
+            <BreadcrumbLink as={Link} href="/calculation/scorecal">
               得点計算
             </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../calculation/scoregraph">
+            <BreadcrumbLink as={Link} href="/calculation/scoregraph">
               点数表
             </BreadcrumbLink>
           </BreadcrumbItem>
 
           <BreadcrumbItem>
-            <BreadcrumbLink as={Link} href="../calculation/detailscore">
+            <BreadcrumbLink as={Link} href="/calculation/detailscore">
               符計算
             </BreadcrumbLink>
           </BreadcrumbItem>

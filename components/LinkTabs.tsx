@@ -12,19 +12,19 @@ const LinkTabs = () => {
     <Center marginTop="2%" borderBottom="solid 1px">
     <Breadcrumb fontSize="19px">
       <BreadcrumbItem>
-        <BreadcrumbLink as={Link} href="/handsresult">
+        <BreadcrumbLink as={Link} href="/playlist/handsresult">
           役アガリ歴
         </BreadcrumbLink>
       </BreadcrumbItem>
 
       <BreadcrumbItem>
-        <BreadcrumbLink as={Link} href="/seisan">
+        <BreadcrumbLink as={Link} href="/playlist/seisan">
           精算
         </BreadcrumbLink>
       </BreadcrumbItem>
 
       <BreadcrumbItem>
-        <BreadcrumbLink as={Link} href="/totalresult">
+        <BreadcrumbLink as={Link} href="/playlist/totalresult">
           総合対戦履歴
         </BreadcrumbLink>
       </BreadcrumbItem>
