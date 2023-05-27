@@ -13,6 +13,10 @@
 https:/portforio-app-mahjong.vercel.app/
 
 [デモアカウント]
+googleにて以下のアカウントにログインして使ってください。
+
+アドレス:potforio.test.acount0205@gmail.com
+パスワード:test0205
 
 [アプリ機能一覧]
 1.役一覧
@@ -47,5 +51,31 @@ https:/portforio-app-mahjong.vercel.app/
     typescript:4.9.5
 
 [環境構築、実行方法]
+1.VSCodeにて、Next.jsを用いたアプリファイルを作成します。
+　$ npm create-next-app@13
+プロンプト選択部分ではTypeScript,EslintをYesとして残りは全てNoで設定します。
+
+2.chakra-uiをインストールします。
+　$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+    chakra-uiはindex.tsxファイル内の関数内で以下の記述が必要です。
+
+(index.tsx)
+import React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+
+function App() {
+  return (
+    <ChakraProvider>
+      <TheRestOfYourApplication />
+    </ChakraProvider>
+  )
+}
+
+3.recoilをインストールします
+  $ npm i recoil
+
+4.firebaseをインストールします。
+  $ npm i firebase@9
 
 
+//TODO デモアカウント作成
