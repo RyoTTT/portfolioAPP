@@ -1,7 +1,7 @@
 # アプリ概要
 　近年、スマホアプリで麻雀ゲームが人気になっていたり、麻雀のプロリーグがネット番組で多くの視聴者を集めていたりと、インターネットの発展に伴って麻雀がより多くの人に遊ばれるものになっています。その一方でスマホアプリから麻雀を始めて実際に麻雀を打つと点数の計算や手牌をサポートなしで打たなければなりません。上級者の雀士の方も点数や精算などの計算に手間がかかってしまいます。
 麻雀初心者の方にとっては麻雀アプリにあるようなサポートアプリとして、麻雀上級者の方にとっては麻雀の手間を省けるアプリとしてだれでも麻雀をより気楽に打てるようになってもらいたく、このアプリを企画、制作しました。
-[アプリ]
+# アプリ
 ・ホーム画面
 <img src="https://github.com/RyoTTT/portforioAPP/assets/115979071/752b6f56-0732-4961-a16c-12bdd6b1029c">
 ・得点計算
@@ -9,16 +9,16 @@
 ・履歴ページ
 ![スクリーンショット 2023-05-26 15 02 16](https://github.com/RyoTTT/portforioAPP/assets/115979071/f7f68c44-38ed-45b0-8b97-1a2459e4ff9b)
 
-[アプリURL]
+# アプリURL
 https:/portforio-app-mahjong.vercel.app/
 
-[デモアカウント]
+# デモアカウント
 googleにて以下のアカウントにログインして使ってください。
 
 アドレス:potforio.test.acount0205@gmail.com
 パスワード:test0205
 
-[アプリ機能一覧]
+# アプリ機能一覧
 1.役一覧
 役の翻別で役の紹介(翻数、鳴きの可否、説明、例)ページです。検索機能つき。
 
@@ -41,7 +41,7 @@ googleにて以下のアカウントにログインして使ってください�
     3.総合対戦履歴
      麻雀を打った日の総合の対戦結果を記録することができます。(要ログイン)
 
-[開発環境]
+# 開発環境
     chakra-ui/react:2.5.1,
     firebase:9.20.0,
     next:13.2.3,
@@ -50,32 +50,29 @@ googleにて以下のアカウントにログインして使ってください�
     recoil:0.7.7,
     typescript:4.9.5
 
-[環境構築、実行方法]
+# 環境構築、実行方法
 1.VSCodeにて、Next.jsを用いたアプリファイルを作成します。
-　$ npm create-next-app@13
+　`$ npm create-next-app@13`
 プロンプト選択部分ではTypeScript,EslintをYesとして残りは全てNoで設定します。
 
 2.chakra-uiをインストールします。
-　$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+　`$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion`
     chakra-uiはindex.tsxファイル内の関数内で以下の記述が必要です。
 
 (index.tsx)
-import React from 'react'
-import { ChakraProvider } from '@chakra-ui/react'
+`import React from 'react'`
+`import { ChakraProvider } from '@chakra-ui/react'`
 
-function App() {
+`function App() {
   return (
     <ChakraProvider>
       <TheRestOfYourApplication />
     </ChakraProvider>
   )
-}
+}`
 
 3.recoilをインストールします
-  $ npm i recoil
+  `$ npm i recoil`
 
 4.firebaseをインストールします。
-  $ npm i firebase@9
-
-
-//TODO デモアカウント作成
+  `$ npm i firebase@9`
