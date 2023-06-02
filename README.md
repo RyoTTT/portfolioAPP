@@ -1,5 +1,5 @@
 # アプリ概要
-　近年、スマホアプリで麻雀ゲームが人気になっていたり、麻雀のプロリーグがネット番組で多くの視聴者を集めていたりと、インターネットの発展に伴って麻雀がより多くの人に遊ばれるものになっています。その一方でスマホアプリから麻雀を始めて実際に麻雀を打つと点数の計算や手牌をサポートなしで打たなければなりません。上級者の雀士の方も点数や精算などの計算に手間がかかってしまいます。
+　近年、スマホアプリで麻雀ゲームが人気になっていたり、麻雀のプロリーグがネット番組で多くの視聴者を集めていたりと、インターネットの発展に伴って麻雀がより多くの人に遊ばれるものになっています。その一方でスマホアプリから麻雀を始めて実際に麻雀を打つと点数の計算や手牌をサポートなしで打たなければなりません。上級者の雀士の方も点数や精算などの計算に手間がかかってしまいます。  
 麻雀初心者の方にとっては麻雀アプリにあるようなサポートアプリとして、麻雀上級者の方にとっては麻雀の手間を省けるアプリとしてだれでも麻雀をより気楽に打てるようになってもらいたく、このアプリを企画、制作しました。
 # アプリ
 ・ホーム画面
@@ -15,7 +15,7 @@ https:/portforio-app-mahjong.vercel.app/
 # デモアカウント
 googleにて以下のアカウントにログインして使ってください。
 
-アドレス:potforio.test.acount0205@gmail.com
+アドレス:potforio.test.acount0205@gmail.com  
 パスワード:test0205
 
 # アプリ機能一覧
@@ -55,23 +55,10 @@ googleにて以下のアカウントにログインして使ってください�
 　`$ npm create-next-app@13`  
 プロンプト選択部分ではTypeScript,EslintをYesとして残りは全てNoで設定します。  
 
-2.chakra-uiをインストールします。
+2.chakra-uiをインストールします。  
 　`$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion`  
-    chakra-uiはindex.tsxファイル内の関数内で以下の記述が必要です。  
 
-(index.tsx)
-`import React from 'react'`  
-`import { ChakraProvider } from '@chakra-ui/react'`  
-
-`function App() {  
-  return (  
-    <ChakraProvider>  
-      <TheRestOfYourApplication />  
-    </ChakraProvider>  
-  )  
-}`  
-
-3.recoilをインストールします  
+3.recoilをインストールします。  
   `$ npm i recoil`  
 
 4.firebaseをインストールします。  
