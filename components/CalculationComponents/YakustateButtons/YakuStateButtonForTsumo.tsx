@@ -18,7 +18,6 @@ export const YakuStateButtonForTsumo = (props: Props) => {
 
   // 自分の役が選択されているかどうかを判定する
   const targetYakuState = yakuStateList.find((yakuState) => yakuState === name);
-  //このコードはtargetYakuStateがfindされたらisSelectedがtrueになるということ？
   const isSelected = targetYakuState !== undefined
 
   const addTsumo = (name:string) => {
