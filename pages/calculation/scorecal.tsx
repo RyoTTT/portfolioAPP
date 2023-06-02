@@ -1337,7 +1337,7 @@ const ScoreCal = () => {
           <Button onClick={hanReset}>役をリセット</Button>
         </Box>
       </Box>
-      </Box>
+
 
 
       <Box border="solid" margin="2%">
@@ -1352,9 +1352,9 @@ const ScoreCal = () => {
             <Button>鳴いてロン</Button>
           </ButtonGroup>
         </Box>
-        <Box margin="1% auto">
+        <Box margin="1% auto" width="auto">
           <Text>面子</Text>
-          <ButtonGroup>
+          <ButtonGroup size="sm" maxWidth="900px">
             <Minko2Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
             <Minko4Button  fuCount={fuCount} minkoCount={minkoCount} setfuCount={setFuCount} setMinkoCount={setMinkoCount}/>
             <Anko4Button fuCount={fuCount} ankoCount={ankoCount} setfuCount={setFuCount} setAnkoCount={setAnkoCount}/>
@@ -1401,6 +1401,7 @@ const ScoreCal = () => {
         <Box textAlign="center" marginTop="2%">
         <Button onClick={yakuUpload} marginRight="1%">記録する</Button>
         <Button onClick={resetScore}>リセットする</Button>
+        </Box>      
         </Box>
     </>
   );
