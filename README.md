@@ -24,11 +24,11 @@ googleにて以下のアカウントにログインして使ってください�
 
 2.点数計算
 　1.点数計算
-    和了した役を選択すると点数を計算します。和了した役はログインしていれば記録することができます。
+    和了した役を選択すると点数を計算します。和了した役はログインしていれば記録することができます。  
   2.点数票
-    麻雀の点数表です。
+    麻雀の点数表です。  
   3.符計算の概要
-    麻雀の点数計算をややこしくする符計算について解説しています。
+    麻雀の点数計算をややこしくする符計算について解説しています。  
 
 3.待ち牌確認
 手牌が一種類の数字の牌の時テンパイしているかどうかを手牌の数字を入力するとテンパイしているかどうか+何待ちなのかを調べて表示します。
@@ -51,28 +51,28 @@ googleにて以下のアカウントにログインして使ってください�
     typescript:4.9.5
 
 # 環境構築、実行方法
-1.VSCodeにて、Next.jsを用いたアプリファイルを作成します。
-　`$ npm create-next-app@13`
-プロンプト選択部分ではTypeScript,EslintをYesとして残りは全てNoで設定します。
+1.VSCodeにて、Next.jsを用いたアプリファイルを作成します。  
+　`$ npm create-next-app@13`  
+プロンプト選択部分ではTypeScript,EslintをYesとして残りは全てNoで設定します。  
 
 2.chakra-uiをインストールします。
-　`$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion`
-    chakra-uiはindex.tsxファイル内の関数内で以下の記述が必要です。
+　`$ npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion`  
+    chakra-uiはindex.tsxファイル内の関数内で以下の記述が必要です。  
 
 (index.tsx)
-`import React from 'react'`
-`import { ChakraProvider } from '@chakra-ui/react'`
+`import React from 'react'`  
+`import { ChakraProvider } from '@chakra-ui/react'`  
 
-`function App() {
-  return (
-    <ChakraProvider>
-      <TheRestOfYourApplication />
-    </ChakraProvider>
-  )
-}`
+`function App() {  
+  return (  
+    <ChakraProvider>  
+      <TheRestOfYourApplication />  
+    </ChakraProvider>  
+  )  
+}`  
 
-3.recoilをインストールします
-  `$ npm i recoil`
+3.recoilをインストールします  
+  `$ npm i recoil`  
 
-4.firebaseをインストールします。
-  `$ npm i firebase@9`
+4.firebaseをインストールします。  
+  `$ npm i firebase@9`  
