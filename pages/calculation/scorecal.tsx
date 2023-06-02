@@ -1110,6 +1110,7 @@ const ScoreCal = () => {
     <>
       <Labels />
       <CalcTabs />
+      <Box width="1000px" margin="0 auto">
       <Box border="solid" margin="2% 2%">
         <Text fontSize="25px" fontWeight="bold">
           卓の状況
@@ -1216,7 +1217,7 @@ const ScoreCal = () => {
             />
           </ButtonGroup>
         </Box>
-        <Box>
+        <Box >
           <Text fontSize="20px" textAlign="center" margin="2% auto">2翻役</Text>
           <ButtonGroup onClick={han2Add} marginBottom="1.5%">            
           <YakuStateButton
@@ -1336,6 +1337,9 @@ const ScoreCal = () => {
           <Button onClick={hanReset}>役をリセット</Button>
         </Box>
       </Box>
+      </Box>
+
+
       <Box border="solid" margin="2%">
         <Text fontSize="20px" fontWeight="bold" >
           符計算
