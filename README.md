@@ -17,7 +17,7 @@ googleにて以下のアカウントにログインして使ってください�
 # アプリ機能一覧
 1.役一覧
 役の翻別で役の紹介(翻数、鳴きの可否、説明、例)ページです。検索機能つき。
-<img width=50 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/210c954e-4877-42ea-a36a-7b3933231c20">  
+<img width=200 height=200 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/210c954e-4877-42ea-a36a-7b3933231c20">  
 
 2.点数計算  
 　1.点数計算  
