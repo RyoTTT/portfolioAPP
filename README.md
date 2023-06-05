@@ -12,7 +12,7 @@ googleにて以下のアカウントにログインして使ってください�
 パスワード:test0205
 
 # アプリ機能一覧
-<span style="font-size:200px;">1.役一覧  </span>
+<span style="font-size:200%;">1.役一覧  </span>  
 役の翻別で役の紹介(翻数、鳴きの可否、説明、例)ページです。検索機能つき。
 <img width=400  height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/210c954e-4877-42ea-a36a-7b3933231c20">    
 
