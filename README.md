@@ -12,33 +12,33 @@ googleにて以下のアカウントにログインして使ってください�
 パスワード:test0205
 
 # アプリ機能一覧
-### 1.役一覧  
+#### 1.役一覧  
 役の翻別で役の紹介(翻数、鳴きの可否、説明、例)ページです。検索機能つき。
 <img width=400  height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/210c954e-4877-42ea-a36a-7b3933231c20">    
 
-2.点数計算  
-　1.点数計算  
+#### 2.点数計算  
+### 1.点数計算  
     和了した役を選択すると点数を計算します。和了した役はログインしていれば記録することができます。  
   <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/8aaf28ad-b939-44d6-bc32-93673a5d027d">    
-  2.点数票  
+### 2.点数票  
     麻雀の点数表です。  
     <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/813e0a4c-f305-4adb-aeca-740ddb3c5bd5">    
-  3.符計算の概要  
+### 3.符計算の概要  
     麻雀の点数計算をややこしくする符計算について解説しています。  
     <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/4ed72b10-866b-4275-851b-aa8092550efd">  
 
-3.待ち牌確認  
+#### 3.待ち牌確認  
 手牌が一種類の数字の牌の時テンパイしているかどうかを手牌の数字を入力するとテンパイしているかどうか+何待ちなのかを調べて表示します。  
 <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/774590ef-26a9-4548-90dd-c3fbadfd7e62">  
 
-4.履歴  
-    1.役上がり歴  
+#### 4.履歴  
+### 1.役上がり歴  
     　自分がこれまでどんな役で和了したのかを見ることができます。自分がよく和了している役を見ることで自分の癖を見つけることができます。(要ログイン)  
     <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/ee62da52-4ecc-4d9d-b894-5ef6132fa0cf">  
-    2.精算  
+### 2.精算  
     　麻雀のゲーム終了後に行う総合順位を決める計算を行うことができます。レート換算も可能です。  
     <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/256b40b7-cc5e-46c7-9f6d-cce4601e7620">  
-    3.総合対戦履歴  
+### 3.総合対戦履歴  
      麻雀を打った日の総合の対戦結果を記録することができます。(要ログイン)  
      <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/3962a9a2-115b-4ecc-979c-f8baef4b01a0">  
 
