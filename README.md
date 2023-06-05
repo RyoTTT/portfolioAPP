@@ -18,14 +18,14 @@ googleにて以下のアカウントにログインして使ってください�
 
 ### 2.点数計算  
 #### 1.点数計算  
-    和了した役を選択すると点数を計算します。和了した役はログインしていれば記録することができます。  
-  <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/8aaf28ad-b939-44d6-bc32-93673a5d027d">  
+和了した役を選択すると点数を計算します。和了した役はログインしていれば記録することができます。  
+<img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/8aaf28ad-b939-44d6-bc32-93673a5d027d">  
 #### 2.点数票  
-    麻雀の点数表です。  
-    <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/813e0a4c-f305-4adb-aeca-740ddb3c5bd5">  
+麻雀の点数表です。  
+<img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/813e0a4c-f305-4adb-aeca-740ddb3c5bd5">  
 #### 3.符計算の概要  
-    麻雀の点数計算をややこしくする符計算について解説しています。  
-    <img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/4ed72b10-866b-4275-851b-aa8092550efd">  
+麻雀の点数計算をややこしくする符計算について解説しています。  
+<img width=400 height=400 src="https://github.com/RyoTTT/portforioAPP/assets/115979071/4ed72b10-866b-4275-851b-aa8092550efd">  
 
 ### 3.待ち牌確認  
 手牌が一種類の数字の牌の時テンパイしているかどうかを手牌の数字を入力するとテンパイしているかどうか+何待ちなのかを調べて表示します。  
